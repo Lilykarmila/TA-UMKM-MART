@@ -5,14 +5,14 @@ import 'package:ta_ecommerce/utils/constans/sizes.dart';
 class TProfileMenu extends StatelessWidget {
   const TProfileMenu({
     super.key,
-    this.icon = Iconsax.arrow_right_34,
-    required this.onPressed,
+    this.icon,
+    this.onPressed,
     required this.title,
     required this.value,
   });
 
-  final IconData icon;
-  final VoidCallback onPressed;
+  final IconData? icon;
+  final VoidCallback? onPressed;
   final String title, value;
 
   @override

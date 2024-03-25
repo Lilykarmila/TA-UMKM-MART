@@ -1,0 +1,101 @@
+
+name: ta_ecommerce
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.4 <3.0.0'
+ #------------------  PACKAGES ----------------#
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  iconsax: ^0.0.8
+  http: ^0.13.6
+  intl: ^0.18.1
+  logger: ^2.0.2+1
+  url_launcher: ^6.1.11
+  get_storage: ^2.1.1
+  flutter_native_splash: ^2.2.19
+  smooth_page_indicator: ^1.1.0
+  carousel_slider: ^4.2.1
+  readmore: ^2.2.0
+  flutter_rating_bar: ^4.0.1
+  firebase_core: ^2.24.2
+  lottie: ^2.7.0
+  connectivity_plus: ^5.0.2
+  firebase_auth: ^4.15.3
+  cloud_firestore: ^4.13.6
+  google_sign_in: ^6.2.1
+  shimmer: ^3.0.0
+  image_picker: ^1.0.5
+  firebase_storage: ^11.5.6
+  cached_network_image: ^3.3.0
+  shared_preferences: ^2.0.0
+
+#----------- END PACKAGES --------------------#
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+
+#
+#flutter_native_splash:
+#  color: "#FFFFFF"
+#  color_dark: "#272727"
+#  image: assets/logos/logo-light.png
+#  image_dark: assets/logos/logo-dark.png
+#
+#  android 12:
+#    color: "#FFFFFF"
+#    color_dark: "#272727"
+#    image: assets/logos/logo-light.png
+#    image_dark: assets/logos/logo-dark.png
+#
+#  web: false
+
+#------------ LOCAL ASSETS ----------#
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/images/animations/
+    - assets/images/product/
+    - assets/images/profile/
+    - assets/images/chat/
+    - assets/images/categories/
+    - assets/images/pembayaran/
+    - assets/images/on_boarding_images/
+    - assets/logos/
+    - assets/logos/merchant_logo/
+    - assets/models/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 800
+
+

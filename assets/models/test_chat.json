@@ -1,0 +1,26 @@
+{
+  "connection": [
+    "Lilykarmila5@gmail.com",
+    "cingkuro@gmail.com"
+  ],
+  "total_chats": 10,
+  "total_read": 8,
+  "total_unread": 2,
+  "chat": [
+    {
+      "pengirim":"cingkuro@gmail.com" ,
+      "penerima":"Lilykarmila5@gmail.com" ,
+      "pesan":"apakah masih tersedia" ,
+      "time":"2024-02-25T13:22:55.748721" ,
+      "isRead": true
+    },
+    {
+      "pengirim":"Lilykarmila5@gmail.com" ,
+      "penerima":"cingkuro@gmail.com" ,
+      "pesan":" masih kak" ,
+      "time":"2024-02-25T13:22:55.748721" ,
+      "isRead": true
+    }
+  ],
+  "lastTime": "2024-02-25T13:22:55.748721"
+}

@@ -1,0 +1,21 @@
+{
+  "uid":"5RbbemOHYBZ7uz3ifxFjhwEHwGm2",
+  "name":"Lily karmila",
+  "email":"lilykarmila5@gmail.com",
+  "creationTime":"2021-12-12TI14:14:14.434",
+  "lastSignInTime":"2021-12-12TI14:14:14.434",
+  "photoUrl":"",
+  "updateTime":"2021-12-12TI14:14:14.434",
+  "chats": [
+    {
+      "connection": "cingkuro@gmail.com",
+      "chat_id": "",
+      "lastTime": ""
+    },
+    {
+      "connection": "lilykarmila10@gmail.com",
+      "chat_id": "",
+      "lastTime": ""
+    }
+  ]
+}

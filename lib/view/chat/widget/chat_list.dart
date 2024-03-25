@@ -12,7 +12,11 @@ class ChatList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(ChatRoomPage(merchantImage: merchantModel.image,merchantName: merchantModel.name,merchantId: merchantModel.id,)),
+      onTap: () => Get.to(ChatRoomPage(
+        merchantImage: merchantModel.image,
+        merchantName: merchantModel.name,
+        merchantId: merchantModel.id,
+      )),
       child: Container(
         color: Colors.white,
         child: Column(
@@ -26,8 +30,8 @@ class ChatList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(merchantModel.name, style: Theme.of(context).textTheme.titleSmall),
-                      Text('JL. HEA Mokodompit Lr. Mata Air 2',
-                          style: Theme.of(context).textTheme.labelMedium, overflow: TextOverflow.ellipsis),
+                      // Text('JL. HEA Mokodompit Lr. Mata Air 2',
+                      //     style: Theme.of(context).textTheme.labelMedium, overflow: TextOverflow.ellipsis),
                     ],
                   ),
                 ),

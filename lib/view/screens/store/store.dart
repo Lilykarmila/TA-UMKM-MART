@@ -30,12 +30,12 @@ class StoreScreen extends StatelessWidget {
       child: Scaffold(
         appBar: TAppBar(
           title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-          actions: [
-            /// cart
-            TCardCounterIcon(
-              onPressed: () {},
-            )
-          ],
+          // actions: [
+          //   /// cart
+          //   TCardCounterIcon(
+          //     onPressed: () {},
+          //   )
+          // ],
         ),
         body: NestedScrollView(
           headerSliverBuilder: (_, innerBoxIsScrolled) {
@@ -53,10 +53,10 @@ class StoreScreen extends StatelessWidget {
                     physics: NeverScrollableScrollPhysics(),
                     children: [
                       /// search bar
-                      SizedBox(height: TSizes.spaceBtwItem),
-                      TSearchContainer(
-                          text: ' Search in Store', showBorder: true, showBackground: false, padding: EdgeInsets.zero),
-                      SizedBox(height: TSizes.spaceBtwSections),
+                      // SizedBox(height: TSizes.spaceBtwItem),
+                      // TSearchContainer(
+                      //     text: ' Search in Store', showBorder: true, showBackground: false, padding: EdgeInsets.zero),
+                      // SizedBox(height: TSizes.spaceBtwSections),
 
                       /// featured merchant
                       TSectionHeading(title: 'Featured Merchant', onPressed: () => Get.to(() => AllMerchantScreen())),

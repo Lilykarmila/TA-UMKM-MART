@@ -99,22 +99,23 @@ class TProductCardVertical extends StatelessWidget {
                     child: TProductPriceText(price: controller.getProductPrice(product)),
                   ),
                 ),
+                SizedBox(height: 50)
 
                 /// add to cart button
-                Container(
-                  decoration: const BoxDecoration(
-                    color: TColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(TSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(TSizes.cardRadiusMd),
-                    ),
-                  ),
-                  child: SizedBox(
-                    width: TSizes.icosLg * 1.2,
-                    height: TSizes.icosLg * 1.2,
-                    child: Center(child: Icon(Iconsax.add, color: TColors.white)),
-                  ),
-                ),
+                // Container(
+                //   decoration: const BoxDecoration(
+                //     color: TColors.dark,
+                //     borderRadius: BorderRadius.only(
+                //       topLeft: Radius.circular(TSizes.cardRadiusMd),
+                //       bottomRight: Radius.circular(TSizes.cardRadiusMd),
+                //     ),
+                //   ),
+                //   child: SizedBox(
+                //     width: TSizes.icosLg * 1.2,
+                //     height: TSizes.icosLg * 1.2,
+                //     child: Center(child: Icon(Iconsax.add, color: TColors.white)),
+                //   ),
+                // ),
               ],
             ),
           ],

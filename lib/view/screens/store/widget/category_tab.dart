@@ -25,8 +25,8 @@ class TCategoryTab extends StatelessWidget {
           child: Column(
             children: [
               /// brand
-              TMerchantShowCase(images: [TImages.fashion2, TImages.fashion1, TImages.fashion2]),
-              TMerchantShowCase(images: [TImages.fashion2, TImages.fashion1, TImages.fashion2]),
+              // TMerchantShowCase(images: [TImages.fashion2, TImages.fashion1, TImages.fashion2]),
+              // TMerchantShowCase(images: [TImages.fashion2, TImages.fashion1, TImages.fashion2]),
 
               SizedBox(height: TSizes.spaceBtwItem),
 

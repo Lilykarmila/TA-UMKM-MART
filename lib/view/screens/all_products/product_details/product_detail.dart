@@ -22,7 +22,7 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
-      bottomNavigationBar: TBottomAddToCart(),
+      // bottomNavigationBar: TBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -53,7 +53,13 @@ class ProductDetailScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwItem),
                   SizedBox(
                       width: double.infinity,
-                      child: OutlinedButton(onPressed: () => Get.to(ChatRoomPage(merchantId: product.merchant!.id,merchantName: product.merchant!.name,merchantImage: product.merchant!.image,)), child: Text('Chat Sekarang'))),
+                      child: OutlinedButton(
+                          onPressed: () => Get.to(ChatRoomPage(
+                                merchantId: product.merchant!.id,
+                                merchantName: product.merchant!.name,
+                                merchantImage: product.merchant!.image,
+                              )),
+                          child: Text('Chat Sekarang'))),
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   /// description
@@ -74,15 +80,15 @@ class ProductDetailScreen extends StatelessWidget {
                   ///
                   Divider(),
                   SizedBox(height: TSizes.spaceBtwItem),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TSectionHeading(title: 'Reviews (134)', showActionButton: false),
-                      IconButton(
-                          icon: Icon(Iconsax.arrow_right_3, size: 18),
-                          onPressed: () => Get.to(() => ProductReviewScreen())),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     TSectionHeading(title: 'Reviews (134)', showActionButton: false),
+                  //     IconButton(
+                  //         icon: Icon(Iconsax.arrow_right_3, size: 18),
+                  //         onPressed: () => Get.to(() => ProductReviewScreen())),
+                  //   ],
+                  // ),
                   SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),

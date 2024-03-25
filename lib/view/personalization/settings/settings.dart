@@ -45,29 +45,30 @@ class SettingsScreen extends StatelessWidget {
               padding: EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  /// account settings
-                  TSectionHeading(title: 'Pengaturan akun', showActionButton: false),
-                  SizedBox(height: TSizes.spaceBtwItem),
+                  // /// account settings
+                  // TSectionHeading(title: 'Pengaturan akun', showActionButton: false),
+                  // SizedBox(height: TSizes.spaceBtwItem),
+                  //
+                  // TSettingsMenuTile(
+                  //     icon: Iconsax.safe_home,
+                  //     title: 'Alamat saya',
+                  //     subTitle: 'Set shopping delivery adress',
+                  //     onTap: () => Get.to(() => UserAddressScreen())),
+                  // // TSettingsMenuTile(
+                  // //     icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Set shopping delivery adress'),
+                  // TSettingsMenuTile(
+                  //     icon: Iconsax.bag_tick,
+                  //     title: 'Pesanan saya',
 
-                  TSettingsMenuTile(
-                      icon: Iconsax.safe_home,
-                      title: 'Alamat saya',
-                      subTitle: 'Set shopping delivery adress',
-                      onTap: () => Get.to(() => UserAddressScreen())),
+                  //     subTitle: 'Set shopping delivery adress',
+                  //     onTap: () => Get.to(() => OrderScreen())),
+                  //
+                  // // TSettingsMenuTile(
+                  // //     icon: Iconsax.bank, title: 'Bank Account', subTitle: 'Set shopping delivery adress'),
+                  // // TSettingsMenuTile(
+                  // //     icon: Iconsax.discount_shape, title: 'My Coupons', subTitle: 'Set shopping delivery adress'),
                   // TSettingsMenuTile(
-                  //     icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Set shopping delivery adress'),
-                  TSettingsMenuTile(
-                      icon: Iconsax.bag_tick,
-                      title: 'Pesanan saya',
-                      subTitle: 'Set shopping delivery adress',
-                      onTap: () => Get.to(() => OrderScreen())),
-
-                  // TSettingsMenuTile(
-                  //     icon: Iconsax.bank, title: 'Bank Account', subTitle: 'Set shopping delivery adress'),
-                  // TSettingsMenuTile(
-                  //     icon: Iconsax.discount_shape, title: 'My Coupons', subTitle: 'Set shopping delivery adress'),
-                  TSettingsMenuTile(
-                      icon: Iconsax.notification, title: 'Notifikasi', subTitle: 'Set shopping delivery adress'),
+                  //     icon: Iconsax.notification, title: 'Notifikasi', subTitle: 'Set shopping delivery adress'),
                   // TSettingsMenuTile(
                   //     icon: Iconsax.security_card, title: 'Account Privacy', subTitle: 'Set shopping delivery adress'),
 
@@ -94,7 +95,7 @@ class SettingsScreen extends StatelessWidget {
                   //     trailing: Switch(value: true, onChanged: (value) {})),
 
                   /// Logout Button
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  // SizedBox(height: TSizes.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(

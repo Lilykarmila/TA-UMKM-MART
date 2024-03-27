@@ -21,7 +21,7 @@ class UserRepository extends GetxController {
   /// functions to save user data to firestore
   Future<void> saveUserRecord(UserModel user) async {
     try {
-      await _db.collection("Users").doc(user.email).set(user.toJson());
+      await _db.collection("Users").doc(user.uid).set(user.toJson());
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {
@@ -36,8 +36,7 @@ class UserRepository extends GetxController {
   /// function to fetch user details based on user id
   Future<UserModel> fetchUserDetails() async {
     try {
-      final documentSnapshot =
-          await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.email).get();
+      final documentSnapshot = await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.uid).get();
       if (documentSnapshot.exists) {
         return UserModel.fromSnapshot(documentSnapshot);
       } else {

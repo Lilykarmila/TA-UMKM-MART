@@ -47,13 +47,13 @@ class MerchantRepository extends GetxController {
     }
   }
 
-  Future<UserModel?> getFilteredMerchants(String id)  async {
-    try{
+  Future<UserModel?> getFilteredMerchants(String id) async {
+    try {
       UserModel? m = null;
-      final list =  await getAllUser();
-      for (int i = 0 ; i < list.length ; i++){
+      final list = await getAllUser();
+      for (int i = 0; i < list.length; i++) {
         print("jennoi item ${list[i].uid} ${list[i].username}");
-        if (list[i].uid == id){
+        if (list[i].uid == id) {
           m = list[i];
           break;
         }
@@ -68,7 +68,7 @@ class MerchantRepository extends GetxController {
       //   })
       // });
       return m;
-    }catch(e){
+    } catch (e) {
       throw e;
     }
   }

@@ -14,6 +14,7 @@ class ChatServices extends ChangeNotifier {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final repository = Get.put(MerchantRepository());
+  final apiUrl = '';
   // Future<void> addChat({UserModel? user, bool? isFromUser, String? chat}) async {
   //   try {
   //     await firestore.collection('Chat').add({
@@ -41,8 +42,7 @@ class ChatServices extends ChangeNotifier {
     }
   }
 
-  Future<List<UserModel>> _processSnapshot(
-      QuerySnapshot<Map<String, dynamic>> snapshot, String userId) async {
+  Future<List<UserModel>> _processSnapshot(QuerySnapshot<Map<String, dynamic>> snapshot, String userId) async {
     List<UserModel> allChats = [];
     print("jennoi ${snapshot.docs.length}");
     for (var doc in snapshot.docs) {
@@ -69,45 +69,48 @@ class ChatServices extends ChangeNotifier {
     return allChats;
   }
 
-  Future<void> sendMessage(UserModel user, String receiverId, String receiverName, String receiverEmail, String receiverImage, String message) async{
+  Future<void> sendMessage(UserModel user, String receiverId, String receiverName, String receiverEmail,
+      String receiverImage, String message) async {
     final Timestamp timestamp = Timestamp.now();
+    // var url = Uri.parse('$apiUrl/api/v1/merchants');
 
     ChatModel chatModel = ChatModel(
-      senderId:  _auth.currentUser?.uid,
-      senderEmail: user.email,
-      senderImage: user.profilePicture,
-      senderName: user.fullName,
-      receiverId: receiverId,
-      receiverName:  receiverName,
-      receiverEmail: receiverEmail,
-      receiverImage: receiverImage,
-      message: message,
-      timestamp: timestamp
-    );
+        senderId: _auth.currentUser?.uid,
+        senderEmail: user.email,
+        senderImage: user.profilePicture,
+        senderName: user.fullName,
+        receiverId: receiverId,
+        receiverName: receiverName,
+        receiverEmail: receiverEmail,
+        receiverImage: receiverImage,
+        message: message,
+        timestamp: timestamp);
 
-    List<String> ids = [_auth.currentUser!.uid,receiverId];
+    List<String> ids = [_auth.currentUser!.uid, receiverId];
     ids.sort();
     String chatRoomId = ids.join("_");
 
-    try{
-      await firestore.collection('Chat').doc(chatRoomId).set({
-        "id": chatRoomId
-      }).then((value) => {
-
-      });
+    try {
+      // var url = Uri.parse('$apiUrl/api/v1/merchants');
+      await firestore.collection('Chat').doc(chatRoomId).set({"id": chatRoomId}).then((value) => {});
       await firestore.collection('Chat').doc(chatRoomId).collection("messages").add(chatModel.toJson());
       print('Pesan berhasil dikirim!');
-    }catch(e){
+    } catch (e) {
       throw Exception('Pesan gagal dikirim');
     }
   }
 
-  Stream<QuerySnapshot> getMessages(String userId, String otherUserId){
+  Stream<QuerySnapshot> getMessages(String userId, String otherUserId) {
     print(userId);
-    List<String> ids = [userId,otherUserId];
+    List<String> ids = [userId, otherUserId];
     ids.sort();
     String chatRoomId = ids.join("_");
 
-    return firestore.collection("Chat").doc(chatRoomId).collection("messages").orderBy("timestamp",descending: false).snapshots();
+    return firestore
+        .collection("Chat")
+        .doc(chatRoomId)
+        .collection("messages")
+        .orderBy("timestamp", descending: false)
+        .snapshots();
   }
 }

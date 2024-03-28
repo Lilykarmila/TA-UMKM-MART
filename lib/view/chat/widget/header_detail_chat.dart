@@ -11,16 +11,15 @@ import '../../../utils/devices/devices_utility.dart';
 import '../../../utils/helper/helper_functions.dart';
 
 class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
-  THeaderChat({
-    super.key,
-    this.title,
-    this.showBackArrow = false,
-    this.leadingIcon,
-    this.actions,
-    this.leadingOnPressed,
-    required this.merchantName,
-    required this.merchantImage
-  });
+  THeaderChat(
+      {super.key,
+      this.title,
+      this.showBackArrow = false,
+      this.leadingIcon,
+      this.actions,
+      this.leadingOnPressed,
+      required this.merchantName,
+      required this.merchantImage});
 
   final Widget? title;
   final bool showBackArrow;

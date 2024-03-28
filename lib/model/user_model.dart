@@ -61,7 +61,7 @@ class UserModel {
   /// convert model to JSON structure for data in firebase.
   Map<String, dynamic> toJson() {
     return {
-      "Uid" : uid,
+      "Uid": uid,
       'FullName': fullName,
       'Username': username,
       'Email': email,
@@ -69,7 +69,7 @@ class UserModel {
       'CreationTime': creationTime,
       'LastSignInTime': lastSignInTime,
       'UpdateTime': updateTime,
-      "Type" : type
+      "Type": type
       // 'Chats': chats?.map((chat) => chat.toJson()).toList ?? [],
     };
   }
@@ -79,17 +79,17 @@ class UserModel {
     if (document.data() != null) {
       final data = document.data()!;
       return UserModel(
-        uid: data['Uid'] ?? '',
-        fullName: data['FullName'] ?? '',
-        username: data['Username'] ?? '',
-        email: data['Email'] ?? '',
-        profilePicture: data['ProfilePicture'] ?? '',
-        creationTime: data['CreationTime'],
-        lastSignInTime: data['LastSignInTime'],
-        updateTime: data['UpdateTime'] ?? '',
-        type: data["Type"]
-        // chats: (data?['Chats'] as List<dynamic>?)?.map((chat) => Chat.fromJson(chat)).toList(),
-      );
+          uid: data['Uid'] ?? '',
+          fullName: data['FullName'] ?? '',
+          username: data['Username'] ?? '',
+          email: data['Email'] ?? '',
+          profilePicture: data['ProfilePicture'] ?? '',
+          creationTime: data['CreationTime'],
+          lastSignInTime: data['LastSignInTime'],
+          updateTime: data['UpdateTime'] ?? '',
+          type: data["Type"]
+          // chats: (data?['Chats'] as List<dynamic>?)?.map((chat) => Chat.fromJson(chat)).toList(),
+          );
     }
     return UserModel.empty();
   }

@@ -15,37 +15,38 @@ class ChatController extends GetxController {
   final uRepo = Get.put(UserRepository());
   final firebase = FirebaseAuth.instance;
 
-  void sendMessages(String receiverId, String receiverName, String receiverEmail, String receiverImage, String message) async{
+  void sendMessages(
+      String receiverId, String receiverName, String receiverEmail, String receiverImage, String message) async {
     try {
       UserModel user = await uRepo.fetchUserDetails();
       print(user.uid);
       repository.sendMessages(user, receiverId, receiverName, receiverEmail, receiverImage, message);
-    }
-    catch(e){
+    } catch (e) {
       throw e.toString();
     }
   }
+
   Stream<QuerySnapshot>? getMessages(String userId, String otherUserId) {
-    try{
+    try {
       if (userId == "" || otherUserId == "") return null;
       final messages = repository.getMessages(userId, otherUserId);
-      print(userId+otherUserId);
+      print(userId + otherUserId);
       return messages;
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
 
-  String getLoginId(){
-    return firebase.currentUser!=null ? firebase.currentUser!.uid : "";
+  String getLoginId() {
+    return firebase.currentUser != null ? firebase.currentUser!.uid : "";
   }
 
-  Stream<List<UserModel>> getListChatFromUserLogin(String userId)  {
-    try{
-      print(userId+" lala");
+  Stream<List<UserModel>> getListChatFromUserLogin(String userId) {
+    try {
+      print(userId + " lala");
       final list = repository.getListChatFromUserLogin(userId);
       return list;
-    }catch(e){
+    } catch (e) {
       rethrow;
     }
   }

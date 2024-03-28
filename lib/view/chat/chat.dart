@@ -22,31 +22,43 @@ class ChatScreen extends StatelessWidget {
           showBackArrow: false),
       body: StreamBuilder<List<UserModel>>(
           stream: controller.getListChatFromUserLogin(controller.getLoginId()),
-          builder: (context,snapshot) {
+          builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator()); // Display a loading indicator
             } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}',style: TextStyle(color: Colors.black),);
+              return Text(
+                'Error: ${snapshot.error}',
+                style: TextStyle(color: Colors.black),
+              );
             } else {
               // Data has been successfully retrieved
               List<UserModel> merchantList = snapshot.data!;
-              if (merchantList.isEmpty){
-                return Center(child: Text('No Chat Available',style: TextStyle(color: Colors.black),));
+              if (merchantList.isEmpty) {
+                return Center(
+                    child: Text(
+                  'No Chat Available',
+                  style: TextStyle(color: Colors.black),
+                ));
               }
               // Use the merchantList to build your UI, for example:
               return ListView.builder(
                 itemCount: merchantList.length,
                 itemBuilder: (context, index) {
-
                   return ListTile(
-                      title: ChatList(merchantModel: MerchantModel(id: merchantList[index].uid,image: merchantList[index].profilePicture,name: merchantList[index].fullName,isFeatured: true,description: merchantList[index].updateTime),)
-                    // Add more widget for displaying merchant details as needed
-                  );
+                      title: ChatList(
+                    merchantModel: MerchantModel(
+                        id: merchantList[index].uid,
+                        image: merchantList[index].profilePicture,
+                        name: merchantList[index].fullName,
+                        isFeatured: true,
+                        description: merchantList[index].updateTime),
+                  )
+                      // Add more widget for displaying merchant details as needed
+                      );
                 },
               );
             }
-          }
-        ),
+          }),
     );
   }
 }

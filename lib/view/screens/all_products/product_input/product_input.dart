@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,6 +35,7 @@ class _ProductInputPageState extends State<ProductInputPage> {
     _initPreferences();
     fetchCategory();
   }
+
   _initPreferences() async {
     _prefs = await SharedPreferences.getInstance();
     _merchantId = _prefs.getString('uid') ?? '';
@@ -43,14 +43,18 @@ class _ProductInputPageState extends State<ProductInputPage> {
     _merchantImage = _prefs.getString('image') ?? '';
     setState(() {});
   }
+
   fetchCategory() async {
-    QuerySnapshot categorySnapshot =
-    await FirebaseFirestore.instance.collection('Categories').get();
+    QuerySnapshot categorySnapshot = await FirebaseFirestore.instance.collection('Categories').get();
 
     List<CategoryModel> fetchedCategory = categorySnapshot.docs.map((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      return CategoryModel(id: doc.id, name: data['Name'],isFeatured: data["IsFeatured"],
-      parentId: data["ParentId"].toString(),image: data["Image"]);
+      return CategoryModel(
+          id: doc.id,
+          name: data['Name'],
+          isFeatured: data["IsFeatured"],
+          parentId: data["ParentId"].toString(),
+          image: data["Image"]);
     }).toList();
     setState(() {
       categoryList = fetchedCategory;
@@ -62,8 +66,8 @@ class _ProductInputPageState extends State<ProductInputPage> {
       context: context,
       builder: (BuildContext context) {
         return AddProductDialog(
-          onSubmit: (String productName, String productPrice, String productDesc,String? imgUrl) {
-            _submitProduct(productName,productPrice,productDesc,imgUrl);
+          onSubmit: (String productName, String productPrice, String productDesc, String? imgUrl) {
+            _submitProduct(productName, productPrice, productDesc, imgUrl);
             Navigator.pop(context); // Close the dialog
           },
           onCategoryChanged: (category) {
@@ -77,13 +81,11 @@ class _ProductInputPageState extends State<ProductInputPage> {
     );
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product List'),
+        title: Text('Produk Toko'),
         actions: [
           IconButton(
             icon: Icon(Icons.add),
@@ -94,9 +96,7 @@ class _ProductInputPageState extends State<ProductInputPage> {
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection('Product')
-            .snapshots(),
+        stream: FirebaseFirestore.instance.collection('Product').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -109,15 +109,16 @@ class _ProductInputPageState extends State<ProductInputPage> {
           }
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data =
-              document.data() as Map<String, dynamic>;
+              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
               print("id ${_merchantId}");
-              return data["Merchant"]["Id"] == _merchantId ? ListTile(
-                title: Text(data['Title']),
-                subtitle: Text('Price: \$${data['Price']}'),
-                leading: Image.network(data['Thumbnail']),
-                // You can customize ListTile further as per your requirement
-              ): Container();
+              return data["Merchant"]["Id"] == _merchantId
+                  ? ListTile(
+                      title: Text(data['Title']),
+                      subtitle: Text('Price: \$${data['Price']}'),
+                      leading: Image.network(data['Thumbnail']),
+                      // You can customize ListTile further as per your requirement
+                    )
+                  : Container();
             }).toList(),
           );
         },
@@ -125,8 +126,7 @@ class _ProductInputPageState extends State<ProductInputPage> {
     );
   }
 
-  void _submitProduct(String productName, String productPrice, String productDesc,String? imgUrl) {
-
+  void _submitProduct(String productName, String productPrice, String productDesc, String? imgUrl) {
     final ProductModel product = ProductModel(
         id: DateTime.now().millisecondsSinceEpoch.toString(), // Generate a unique ID
         title: productName,
@@ -138,20 +138,13 @@ class _ProductInputPageState extends State<ProductInputPage> {
         images: [],
         isFeatured: true,
         merchant: MerchantModel(
-            id: _merchantId,
-            image: _merchantImage,
-            name: _merchantName,
-            isFeatured: true,
-            description: ""
-        )
-    );
+            id: _merchantId, image: _merchantImage, name: _merchantName, isFeatured: true, description: ""));
     controller.submitProduct(context, product);
-
   }
 }
 
 class AddProductDialog extends StatefulWidget {
-  final Function(String,String,String,String?) onSubmit;
+  final Function(String, String, String, String?) onSubmit;
   final Function(String?) onCategoryChanged;
   final List<CategoryModel> categoryList;
 
@@ -161,7 +154,6 @@ class AddProductDialog extends StatefulWidget {
 }
 
 class _AddProductDialogState extends State<AddProductDialog> {
-
   CategoryModel? selectedCategory;
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -177,6 +169,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
       });
     }
   }
+
   Future<String?> _uploadImageToStorage() async {
     Reference storageReference = FirebaseStorage.instance.ref().child('Products/${DateTime.now()}.png');
     UploadTask uploadTask = storageReference.putFile(_imageFile!);
@@ -189,9 +182,8 @@ class _AddProductDialogState extends State<AddProductDialog> {
 
     print("Image URL: $downloadURL");
 
-    return downloadURL;// Placeholder URL, replace this with the actual URL
+    return downloadURL; // Placeholder URL, replace this with the actual URL
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -260,7 +252,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
           onPressed: () async {
             String? imageUrl = await _uploadImageToStorage();
             print("imageurl ${imageUrl}");
-            widget.onSubmit(nameController.text,priceController.text,descriptionController.text,imageUrl);
+            widget.onSubmit(nameController.text, priceController.text, descriptionController.text, imageUrl);
             nameController.clear();
             priceController.clear();
             descriptionController.clear();

@@ -28,6 +28,7 @@ class _ChatListState extends State<ChatList> {
         merchantImage: widget.merchantModel.image,
         merchantName: widget.merchantModel.name,
         merchantId: widget.merchantModel.id,
+        // merchantType: widget.merchantModel.type.toString(),
       )),
       child: Container(
         color: Colors.white,

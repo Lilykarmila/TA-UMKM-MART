@@ -7,6 +7,8 @@ import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_bubble_widget.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_input.dart';
 import 'header_detail_chat.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class ChatRoomPage extends StatelessWidget {
   const ChatRoomPage({
@@ -14,15 +16,26 @@ class ChatRoomPage extends StatelessWidget {
     required this.merchantName,
     required this.merchantId,
     required this.merchantImage,
+    this.merchantType,
   }) : super(key: key);
 
   final String merchantName;
   final String merchantId;
   final String merchantImage;
+  final String? merchantType;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ChatController());
+    final url = 'https://b027-180-251-144-211.ngrok-free.app/api/decrypt';
+
+    final loginId = controller.getLoginId();
+    var key = "";
+    if (merchantType == "user") {
+      key = loginId.substring(0, 8) + merchantId.substring(0, 8);
+    } else {
+      key = merchantId.substring(0, 8) + loginId.substring(0, 8);
+    }
 
     return Scaffold(
       appBar: THeaderChat(
@@ -51,14 +64,43 @@ class ChatRoomPage extends StatelessWidget {
                     return Center(child: CircularProgressIndicator());
                   }
                   final List<DocumentSnapshot> docs = snapshot.data.docs;
-                  return ListView.builder(
-                    itemCount: docs.length,
-                    itemBuilder: (context, index) {
-                      final data = docs[index].data() as Map<String, dynamic>;
-                      return TChatBubble(
-                        isSender: data["senderId"] == controller.getLoginId(),
-                        text: data["message"],
-                      );
+                  return FutureBuilder(
+                    future: Future.wait(docs.map((doc) async {
+                      final data = doc.data() as Map<String, dynamic>;
+
+                      Map<String, dynamic> requestBody = {
+                        'ciphertext': data["message"],
+                        'key': key,
+                      };
+
+                      final response = await http.post(Uri.parse(url), body: requestBody);
+
+                      if (response.statusCode == 200) {
+                        final jsonResponse = json.decode(response.body);
+                        data["message"] = jsonResponse["output"];
+                      } else {
+                        throw Exception('Failed to fetch data');
+                      }
+
+                      return data;
+                    })),
+                    builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        return ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            final data = snapshot.data![index];
+                            return TChatBubble(
+                              isSender: data["senderId"] == loginId,
+                              text: data["message"],
+                            );
+                          },
+                        );
+                      }
                     },
                   );
                 },

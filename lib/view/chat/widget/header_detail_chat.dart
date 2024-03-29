@@ -51,7 +51,8 @@ class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                TCircleAvatarImage(backgroundImage: merchantImage),
+                TCircleAvatarImage(backgroundImage: TImages.merchantLogo1),
+                // TCircleAvatarImage(backgroundImage: merchantImage),
                 // TCircularImage(image: TImages.merchantLogo1, height: TSizes.icosMd, width: TSizes.icosMd),
                 SizedBox(width: TSizes.spaceBtwItem),
                 Column(

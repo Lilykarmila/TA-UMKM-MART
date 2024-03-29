@@ -16,25 +16,27 @@ class ChatRoomPage extends StatelessWidget {
     required this.merchantName,
     required this.merchantId,
     required this.merchantImage,
-    this.merchantType,
+    required this.merchantType,
   }) : super(key: key);
 
   final String merchantName;
   final String merchantId;
   final String merchantImage;
-  final String? merchantType;
+  final String merchantType;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ChatController());
-    final url = 'https://b027-180-251-144-211.ngrok-free.app/api/decrypt';
+
+    final url = 'https://8e10-180-251-144-211.ngrok-free.app/api/decrypt';
 
     final loginId = controller.getLoginId();
     var key = "";
+    // print("Merchant Type:" + merchantType?);
     if (merchantType == "user") {
-      key = loginId.substring(0, 8) + merchantId.substring(0, 8);
-    } else {
       key = merchantId.substring(0, 8) + loginId.substring(0, 8);
+    } else {
+      key = loginId.substring(0, 8) + merchantId.substring(0, 8);
     }
 
     return Scaffold(

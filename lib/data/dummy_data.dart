@@ -53,7 +53,7 @@ class TDummyData {
       isFeatured: true,
       thumbnail: TImages.productFashionKemeja1,
       description: 'Kemeja wanita kekinian',
-      merchant: MerchantModel(id: '1', image: TImages.merchantLogo1, name: 'Sweet Store', isFeatured: true),
+      merchant: MerchantModel(id: '1', image: TImages.merchantLogo1, name: 'Sweet Store', isFeatured: true, type: ''),
       images: [TImages.productFashionKemeja1, TImages.productFashionKemeja2],
       categoryId: '1',
       productType: '',

@@ -47,11 +47,13 @@ class ChatScreen extends StatelessWidget {
                   return ListTile(
                       title: ChatList(
                     merchantModel: MerchantModel(
-                        id: merchantList[index].uid,
-                        image: merchantList[index].profilePicture,
-                        name: merchantList[index].fullName,
-                        isFeatured: true,
-                        description: merchantList[index].updateTime),
+                      id: merchantList[index].uid,
+                      image: merchantList[index].profilePicture,
+                      name: merchantList[index].fullName,
+                      isFeatured: true,
+                      description: merchantList[index].updateTime,
+                      type: merchantList[index].type.toString(),
+                    ),
                   )
                       // Add more widget for displaying merchant details as needed
                       );

@@ -56,7 +56,7 @@ class ChatController extends GetxController {
       };
 
       // Send the POST request to Firestore endpoint
-      var url = Uri.parse('https://b027-180-251-144-211.ngrok-free.app/api/encrypt');
+      var url = Uri.parse('https://8e10-180-251-144-211.ngrok-free.app/api/encrypt');
       var response = await http.post(
         url,
         body: requestBody,
@@ -92,27 +92,6 @@ class ChatController extends GetxController {
     try {
       if (userId == "" || otherUserId == "") return null;
       final messages = repository.getMessages(userId, otherUserId);
-      print("Messages:" + messages.toString());
-
-      // Your Firestore endpoint URL
-      var url = 'https://b027-180-251-144-211.ngrok-free.app/api/decrypt';
-
-      // Example data to send to Firestore
-      Map<String, dynamic> data = {
-        'ciphertext': messages,
-        'key': userId.substring(0, 8) + otherUserId.substring(0, 8),
-      };
-
-      // Send a POST request to the Firestore endpoint
-      http.post(Uri.parse(url), body: data).then((response) {
-        // Handle the response here
-        print('Response status: ${response.statusCode}');
-        print('Response body: ${response.body}');
-      }).catchError((error) {
-        // Handle any errors
-        print('Error: $error');
-      });
-
       return messages;
     } catch (e) {
       return null;

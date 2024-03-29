@@ -60,13 +60,18 @@ class MerchantModel {
   String id;
   String name;
   String image;
-  String? type;
+  String type;
   bool? isFeatured;
   String? description;
   // int? productsCount;
 
   MerchantModel(
-      {required this.id, required this.image, required this.name, this.isFeatured, this.description, this.type});
+      {required this.id,
+      required this.image,
+      required this.name,
+      this.isFeatured,
+      this.description,
+      required this.type});
 
   /// empty helper function
   static MerchantModel empty() => MerchantModel(id: '', image: '', name: '', type: '');

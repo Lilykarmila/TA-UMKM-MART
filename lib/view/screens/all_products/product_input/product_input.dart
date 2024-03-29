@@ -138,7 +138,7 @@ class _ProductInputPageState extends State<ProductInputPage> {
         images: [],
         isFeatured: true,
         merchant: MerchantModel(
-            id: _merchantId, image: _merchantImage, name: _merchantName, isFeatured: true, description: ""));
+            id: _merchantId, image: _merchantImage, name: _merchantName, isFeatured: true, description: "", type: ""));
     controller.submitProduct(context, product);
   }
 }

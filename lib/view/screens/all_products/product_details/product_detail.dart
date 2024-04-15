@@ -58,7 +58,7 @@ class ProductDetailScreen extends StatelessWidget {
                                 merchantId: product.merchant!.id,
                                 merchantName: product.merchant!.name,
                                 merchantImage: product.merchant!.image,
-                                merchantType: product.merchant!.type,
+                                merchantType: product.merchant!.type.toString(),
                                 // merchantType: product.merchant!.type.toString(),
                               )),
                           child: Text('Chat Sekarang'))),

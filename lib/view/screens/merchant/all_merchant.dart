@@ -19,15 +19,15 @@ class AllMerchantScreen extends StatelessWidget {
     final merchantController = MerchantController.instance;
 
     return Scaffold(
-      appBar: TAppBar(title: Text('Toko'), showBackArrow: true),
+      appBar: TAppBar(title: Text('Semua Toko'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               /// heading
-              TSectionHeading(title: 'Semua Toko', showActionButton: false),
-              SizedBox(height: TSizes.spaceBtwSections),
+              // TSectionHeading(title: 'Semua Toko', showActionButton: false),
+              // SizedBox(height: TSizes.spaceBtwSections),
 
               /// brand
 
@@ -40,17 +40,26 @@ class AllMerchantScreen extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white)));
                   }
 
-                  return TGridLayout(
-                      itemCount: merchantController.allMerchants.length,
-                      mainAxisExtend: 80,
-                      itemBuilder: (_, index) {
-                        final merchant = merchantController.allMerchants[index];
-                        return TMerchantCard(
-                          merchant: merchant,
-                          showBorder: true,
-                          onTap: () => Get.to(() => MerchantProducts(merchant: merchant)),
-                        );
-                      });
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 3.5 / 2.5,
+                      crossAxisSpacing: 10, // Spasi horizontal antar grid
+                      mainAxisSpacing: 10, // 150 x 100
+                    ),
+                    itemCount: merchantController.allMerchants.length,
+                    itemBuilder: (_, index) {
+                      final merchant = merchantController.allMerchants[index];
+                      print("Merchant : " + merchant.id);
+                      return TMerchantCard(
+                        merchant: merchant,
+                        showBorder: true,
+                        onTap: () => Get.to(() => MerchantProducts(merchant: merchant)),
+                      );
+                    },
+                  );
                 },
               )
             ],

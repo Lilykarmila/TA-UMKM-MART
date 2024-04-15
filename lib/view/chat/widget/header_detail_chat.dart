@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/common/widgets/images/t_circle_avatar_images.dart';
 
 import '../../../common/widgets/images/t_circular_image.dart';
+import '../../../model/merchant_model.dart';
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/image_strings.dart';
 import '../../../utils/constans/sizes.dart';
@@ -29,9 +30,11 @@ class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
   final String merchantName;
   final String merchantImage;
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    // final  merchantModel = MerchantModel(id: mer);
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: TSizes.xs),
@@ -51,7 +54,8 @@ class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                TCircleAvatarImage(backgroundImage: TImages.merchantLogo1),
+                TCircularImage(image: merchantImage, isNetworkImage: true),
+                // TCircleAvatarImage(backgroundImage: TImages.merchantLogo1),
                 // TCircleAvatarImage(backgroundImage: merchantImage),
                 // TCircularImage(image: TImages.merchantLogo1, height: TSizes.icosMd, width: TSizes.icosMd),
                 SizedBox(width: TSizes.spaceBtwItem),

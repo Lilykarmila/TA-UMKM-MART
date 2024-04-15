@@ -110,7 +110,7 @@ class _ProductInputPageState extends State<ProductInputPage> {
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-              print("id ${_merchantId}");
+              print("id ${_merchantName}");
               return data["Merchant"]["Id"] == _merchantId
                   ? ListTile(
                       title: Text(data['Title']),

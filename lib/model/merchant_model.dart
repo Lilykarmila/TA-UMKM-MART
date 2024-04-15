@@ -79,10 +79,13 @@ class MerchantModel {
   /// convert model to json structure so that you can store ata in firebase
   toJson() {
     return {
-      'Uid': id,
+      'Id': id,
       'FullName': name,
+      'IsFeatured': isFeatured,
+      'Description': description,
       'Type': type,
       'ProfilePicture': image,
+      // 'ProfilePicture': profilPicture,
     };
   }
 
@@ -91,9 +94,10 @@ class MerchantModel {
     final data = document;
     if (data.isEmpty) return MerchantModel.empty();
     return MerchantModel(
-      id: data['Uid'] ?? '',
+      id: data['Id'] ?? '',
       name: data['FullName'] ?? '',
       image: data['ProfilePicture'] ?? '',
+      // profilPicture: data['ProfilePicture'] ?? '',
       type: data['type'] ?? '',
       isFeatured: data['IsFeatured'] ?? false,
       description: data['Description'] ?? '',
@@ -110,6 +114,7 @@ class MerchantModel {
       return MerchantModel(
         id: document.id,
         image: data['ProfilePicture'] ?? '',
+        // profilPicture: data['ProfilePicture'] ?? '',
         name: data['FullName'] ?? '',
         type: data['Type'] ?? '',
         isFeatured: data['IsFeatured'] ?? false,

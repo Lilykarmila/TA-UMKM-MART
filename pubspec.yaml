@@ -37,12 +37,18 @@ dependencies:
   cached_network_image: ^3.3.0
   shared_preferences: ^2.0.0
 
+
 #----------- END PACKAGES --------------------#
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  image_path: "assets/logos/logo-light.png"
 
   flutter_lints: ^2.0.0
 

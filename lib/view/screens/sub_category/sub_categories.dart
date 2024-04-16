@@ -29,7 +29,7 @@ class SubCategoriesScreen extends StatelessWidget {
               Column(
                 children: [
                   /// heading
-                  TSectionHeading(title: 'Kuliner daerah', onPressed: () {}),
+                  // TSectionHeading(title: 'Kuliner daerah'),
                   SizedBox(height: TSizes.spaceBtwItem / 2),
 
                   /// product card

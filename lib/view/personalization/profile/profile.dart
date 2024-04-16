@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                 onPressed: () => Get.to(() => ChangeName()),
                 icon: Iconsax.arrow_right_34,
               ),
-              TProfileMenu(title: 'Username', value: controller.user.value.username, onPressed: () {}),
+              TProfileMenu(title: 'Username', value: controller.user.value.username),
 
               const SizedBox(height: TSizes.spaceBtwItem / 2),
               Divider(),

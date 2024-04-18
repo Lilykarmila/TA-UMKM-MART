@@ -34,7 +34,10 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   /// searchbar
-                  TSearchContainer(text: 'Cari'),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+                    child: TSearchContainer(text: 'Cari'),
+                  ),
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   /// category
@@ -62,10 +65,6 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  /// Promo slider
-                  // TPromoSlider(banners: [TImages.banner2, TImages.banner3, TImages.banner2]),
-                  // SizedBox(height: TSizes.spaceBtwSections),
-
                   /// Heading
                   TSectionHeading(
                       title: 'Produk UMKM',

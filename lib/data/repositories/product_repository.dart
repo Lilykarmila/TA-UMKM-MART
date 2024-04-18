@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/utils/exceptions/firebase_exceptions.dart';
 
+import '../../model/category_model.dart';
 import '../../model/product_model.dart';
 import '../../utils/exceptions/platform_exceptions.dart';
 import '../services/firebase_storage_service.dart';
@@ -14,8 +15,7 @@ class ProductRepository extends GetxController {
 
   /// Firestore instance for database interactions
   final _db = FirebaseFirestore.instance;
-  final CollectionReference _productsCollection =
-  FirebaseFirestore.instance.collection('Product');
+  final CollectionReference _productsCollection = FirebaseFirestore.instance.collection('Product');
 
   /// get limited featured product
   Future<List<ProductModel>> getFeaturedProducts() async {
@@ -131,6 +131,44 @@ class ProductRepository extends GetxController {
       await _productsCollection.doc(product.id).set(product.toJson());
     } catch (e) {
       throw Exception('Failed to save product: $e');
+    }
+  }
+
+  ///------------ GET CATEGORY BY ID
+  Future<CategoryModel?> getCategoryById(String categoryId) async {
+    try {
+      DocumentSnapshot documentSnapshot = await _db.collection('Categories').doc(categoryId).get();
+
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
+        return CategoryModel(
+          id: documentSnapshot.id,
+          name: data['Name'],
+          isFeatured: data["IsFeatured"],
+          parentId: data["ParentId"].toString(),
+          image: data["Image"],
+        );
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print("Error fetching category by id: $e");
+      throw e;
+    }
+  }
+
+  ///---------- GET PRODUCT BY CATEGORY
+  Future<List<ProductModel>> getProductsByCategory(String categoryId) async {
+    try {
+      final querySnapshot = await _db.collection('Product').where('CategoryId', isEqualTo: categoryId).get();
+
+      return querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong, Please try again';
     }
   }
 }

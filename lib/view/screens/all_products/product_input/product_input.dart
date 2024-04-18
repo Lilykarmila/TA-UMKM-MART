@@ -170,6 +170,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
     }
   }
 
+  ///------------------------- upload image to firebase
   Future<String?> _uploadImageToStorage() async {
     Reference storageReference = FirebaseStorage.instance.ref().child('Products/${DateTime.now()}.png');
     UploadTask uploadTask = storageReference.putFile(_imageFile!);
@@ -185,6 +186,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
     return downloadURL; // Placeholder URL, replace this with the actual URL
   }
 
+  ///------------------ Alert dialog
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -229,6 +231,8 @@ class _AddProductDialogState extends State<AddProductDialog> {
               decoration: InputDecoration(labelText: 'Description'),
             ),
             SizedBox(height: 10),
+
+            ///--------------- Pick Image
             ElevatedButton(
               onPressed: () {
                 _pickImage(ImageSource.gallery);
@@ -247,6 +251,8 @@ class _AddProductDialogState extends State<AddProductDialog> {
             Navigator.of(context).pop();
           },
         ),
+
+        ///--------------------------- Tombol Submit / kirim data ke difirebase
         TextButton(
           child: Text('Submit'),
           onPressed: () async {

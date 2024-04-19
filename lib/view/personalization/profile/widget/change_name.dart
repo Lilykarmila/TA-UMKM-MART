@@ -14,6 +14,7 @@ class ChangeName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UpdateNameController());
+
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,

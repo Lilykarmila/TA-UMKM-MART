@@ -129,6 +129,7 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
               return ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
+
                 // gri
                 itemCount: merchantController.allMerchants.length,
                 itemBuilder: (_, index) {

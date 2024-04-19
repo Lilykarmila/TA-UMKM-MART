@@ -22,7 +22,7 @@ class AdminMerchantProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = UserController.instance;
+    final merchantController = MerchantController.instance;
 
     return Scaffold(
       appBar: TAppBar(title: Text(merchant.name), showBackArrow: true),
@@ -52,6 +52,10 @@ class AdminMerchantProfileScreen extends StatelessWidget {
 
               /// heading personal info
               TProfileMenu(
+                title: 'Id',
+                value: merchant.id ?? '',
+              ),
+              TProfileMenu(
                 title: 'E-Mail',
                 value: merchant.email ?? '', // Menambahkan operator null-aware
               ),
@@ -61,7 +65,7 @@ class AdminMerchantProfileScreen extends StatelessWidget {
               /// ----- HAPUS AKUN
               Center(
                 child: TextButton(
-                  onPressed: () => controller.deleteAccountWarningPopup(),
+                  onPressed: () => merchantController.deleteMerchantAccountWarningPopup(merchant.id),
                   child: Text('Hapus Akun', style: TextStyle(color: Colors.red)),
                 ),
               )

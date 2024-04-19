@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
+import 'package:ta_ecommerce/view/admin/home_admin.dart';
 import 'package:ta_ecommerce/view/chat/chat.dart';
 import 'package:ta_ecommerce/view/personalization/settings/settings.dart';
 import 'package:ta_ecommerce/view/screens/all_products/product_input/product_input.dart';
@@ -99,11 +100,13 @@ class NavigationController extends GetxController {
         NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
       ];
     }
-    // if (userType == "admin"){
-    //   destinationsList =[
-    //     NavigationDestination(icon: Icon(Iconsax.home), label: 'Beranda'),
-    //   ];
-    // };
+    if (userType == "admin") {
+      destinationsList = [
+        NavigationDestination(icon: Icon(Iconsax.home), label: 'Beranda'),
+        NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
+      ];
+    }
+    ;
 
     destinations.value = destinationsList;
   }
@@ -124,11 +127,12 @@ class NavigationController extends GetxController {
         SettingsScreen(),
       ];
     }
-    // if (userType == "admin"){
-    //   screens = [
-    //     ProductInputPage()
-    //   ];
-    // }
+    if (userType == "admin") {
+      screens = [
+        HomeAdminScreen(),
+        SettingsScreen(),
+      ];
+    }
 
     return screens;
   }

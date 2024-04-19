@@ -171,4 +171,16 @@ class ProductRepository extends GetxController {
       throw 'Something went wrong, Please try again';
     }
   }
+
+  /// get products by name
+  Future<List<ProductModel>> getProductsByName(String productName) async {
+    try {
+      final querySnapshot = await _db.collection('Product').where('name', isEqualTo: productName).get();
+
+      final products = querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+      return products;
+    } catch (e) {
+      throw 'Error fetching products by name: $e';
+    }
+  }
 }

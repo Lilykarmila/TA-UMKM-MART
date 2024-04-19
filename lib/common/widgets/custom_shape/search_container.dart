@@ -68,11 +68,13 @@
 ///-----
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart'; // Import Get for GetX functionality
 
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/sizes.dart';
 import '../../../utils/devices/devices_utility.dart';
 import '../../../utils/helper/helper_functions.dart';
+import '../../../controller/product_controller/product_controller.dart'; // Import your product controller
 
 class TSearchContainer extends StatelessWidget {
   const TSearchContainer({
@@ -81,21 +83,27 @@ class TSearchContainer extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = true,
-    this.ontap,
     this.padding = const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
   }) : super(key: key);
 
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
-  final VoidCallback? ontap;
   final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final productController = Get.find<ProductController>(); // Get the product controller
+
     return GestureDetector(
-      onTap: ontap,
+      onTap: () {
+        // You can navigate to the search results page or do something else here
+        print("Search for: $text");
+
+        // Fetch products by name using productController
+        productController.fetchProductsByName(text);
+      },
       child: Container(
         width: double.infinity,
         padding: padding,

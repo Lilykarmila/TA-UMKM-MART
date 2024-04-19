@@ -28,7 +28,7 @@ class ChatRoomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ChatController());
 
-    final url = 'https://1181-103-144-227-204.ngrok-free.app/api/decrypt';
+    final url = 'https://964b-114-4-125-62.ngrok-free.app/api/decrypt';
 
     final loginId = controller.getLoginId();
     var key = "";

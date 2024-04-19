@@ -156,4 +156,16 @@ class ProductController extends GetxController {
       return [];
     }
   }
+
+  /// fetch products by name from firestore
+  Future<List<ProductModel>> fetchProductsByName(String productName) async {
+    try {
+      // fetch product
+      final products = await productRepository.getProductsByName(productName);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 }

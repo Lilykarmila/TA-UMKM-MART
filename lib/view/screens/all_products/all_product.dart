@@ -28,7 +28,9 @@ class AllProductsScreen extends StatelessWidget {
         padding: EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           children: [
-            TSearchContainer(text: 'Cari'),
+            TSearchContainer(
+              text: 'Cari',
+            ),
             SizedBox(height: TSizes.spaceBtwSections),
             FutureBuilder(
                 future: futureMethod ?? controller.fetchProductByQuery(query),

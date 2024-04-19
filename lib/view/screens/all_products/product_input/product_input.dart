@@ -28,6 +28,7 @@ class _ProductInputPageState extends State<ProductInputPage> {
   late String _merchantId = "";
   late String _merchantName = "";
   late String _merchantImage = "";
+  late String _merchantEmail = "";
 
   @override
   void initState() {
@@ -138,7 +139,14 @@ class _ProductInputPageState extends State<ProductInputPage> {
         images: [],
         isFeatured: true,
         merchant: MerchantModel(
-            id: _merchantId, image: _merchantImage, name: _merchantName, isFeatured: true, description: "", type: ""));
+          id: _merchantId,
+          image: _merchantImage,
+          email: _merchantEmail,
+          name: _merchantName,
+          isFeatured: true,
+          description: "",
+          type: "",
+        ));
     controller.submitProduct(context, product);
   }
 }

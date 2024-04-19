@@ -50,6 +50,7 @@ class ChatScreen extends StatelessWidget {
                       id: merchantList[index].uid,
                       image: merchantList[index].profilePicture,
                       name: merchantList[index].username,
+                      email: merchantList[index].email,
                       isFeatured: true,
                       description: merchantList[index].updateTime,
                       type: merchantList[index].type.toString(),

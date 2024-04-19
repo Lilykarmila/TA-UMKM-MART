@@ -19,9 +19,11 @@ class AdminMerchantProfileScreen extends StatelessWidget {
   const AdminMerchantProfileScreen({Key? key, required this.merchant}) : super(key: key);
 
   final MerchantModel merchant;
+
   @override
   Widget build(BuildContext context) {
     final controller = UserController.instance;
+
     return Scaffold(
       appBar: TAppBar(title: Text(merchant.name), showBackArrow: true),
 
@@ -41,15 +43,18 @@ class AdminMerchantProfileScreen extends StatelessWidget {
 
               TProfileMenu(
                 title: 'Nama',
-                value: merchant.name,
+                value: merchant.name ?? '', // Menambahkan operator null-aware
                 onPressed: () => Get.to(() => ChangeName()),
                 icon: Iconsax.arrow_right_34,
               ),
               const SizedBox(height: TSizes.spaceBtwItem / 2),
               const SizedBox(height: TSizes.spaceBtwItem),
 
-              ///heading personal info
-              TProfileMenu(title: 'E-Mail', value: controller.user.value.email),
+              /// heading personal info
+              TProfileMenu(
+                title: 'E-Mail',
+                value: merchant.email ?? '', // Menambahkan operator null-aware
+              ),
               Divider(),
               const SizedBox(height: TSizes.spaceBtwItem),
 

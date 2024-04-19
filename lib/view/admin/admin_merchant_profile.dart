@@ -36,7 +36,7 @@ class AdminMerchantProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItem),
 
               /// heading profile info
-              TSectionHeading(title: 'Informasi Profil', showActionButton: false),
+              TSectionHeading(title: 'Informasi Penjual', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItem),
 
               TProfileMenu(

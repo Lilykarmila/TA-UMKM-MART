@@ -7,15 +7,14 @@ class UserModel {
   final String uid;
   String profilePicture;
   String fullName;
-  final String username;
+  String username; // Tidak perlu late keyword di sini jika Anda akan menginisialisasinya di konstruktor.
   final String email;
   String? creationTime;
   String? lastSignInTime;
   String? type;
   String? updateTime;
-  // List<Chat>? chats;
 
-  /// constructor for usermodel
+  // Konstruktor
   UserModel({
     required this.uid,
     required this.fullName,
@@ -26,8 +25,12 @@ class UserModel {
     this.lastSignInTime,
     this.type,
     this.updateTime,
-    // this.chats,
   });
+
+  // Fungsi untuk memperbarui username
+  void updateUsername(String newUsername) {
+    username = newUsername;
+  }
 
   ///---------------------------- helper function to  get the full name
   String get fullNames => '$fullName';
@@ -70,7 +73,6 @@ class UserModel {
       'LastSignInTime': lastSignInTime,
       'UpdateTime': updateTime,
       "Type": type
-      // 'Chats': chats?.map((chat) => chat.toJson()).toList ?? [],
     };
   }
 
@@ -87,9 +89,7 @@ class UserModel {
           creationTime: data['CreationTime'],
           lastSignInTime: data['LastSignInTime'],
           updateTime: data['UpdateTime'] ?? '',
-          type: data["Type"]
-          // chats: (data?['Chats'] as List<dynamic>?)?.map((chat) => Chat.fromJson(chat)).toList(),
-          );
+          type: data["Type"]);
     }
     return UserModel.empty();
   }

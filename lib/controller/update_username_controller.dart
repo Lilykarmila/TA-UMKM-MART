@@ -10,59 +10,43 @@
 //
 // import '../utils/network_manager.dart';
 //
-// /// controller to manage user-related functionality.
-// class UpdateNameController extends GetxController {
-//   static UpdateNameController get instance => Get.find();
+// class UpdateUsernameController extends GetxController {
+//   static UpdateUsernameController get instance => Get.find();
 //
-//   final fullName = TextEditingController();
+//   late final TextEditingController username;
 //   final userController = UserController.instance;
 //   final userRepository = Get.put(UserRepository());
-//   GlobalKey<FormState> updateUserNameFormKey = GlobalKey<FormState>();
+//   GlobalKey<FormState> updateUsernameFormKey = GlobalKey<FormState>();
 //
-//   // init user data when Home Screen appears
 //   @override
 //   void onInit() {
-//     initializeNames();
 //     super.onInit();
+//     username = TextEditingController(text: userController.user.value.username);
 //   }
 //
-//   /// fetch user record
-//   Future<void> initializeNames() async {
-//     fullName.text = userController.user.value.fullName;
-//   }
-//
-//   Future<void> updateUserName() async {
+//   Future<void> updateUsername() async {
 //     try {
-//       // start loading
 //       TFullScreenLoader.openLoadingDialog('Sedang mengupdate informasi anda...', TImages.docerAnimation);
 //
-//       // check internet connectivity
 //       final isConnected = await NetworkManager.instance.isConnected();
 //       if (!isConnected) {
-//         TFullScreenLoader.stopLoading(); // remove loader
+//         TFullScreenLoader.stopLoading();
 //         return;
 //       }
 //
-//       // form validation
-//       if (!updateUserNameFormKey.currentState!.validate()) {
-//         TFullScreenLoader.stopLoading(); // remove loader
+//       if (!updateUsernameFormKey.currentState!.validate()) {
+//         TFullScreenLoader.stopLoading();
 //         return;
 //       }
 //
-//       // update user's fullName in teh firebase firestore
-//       Map<String, dynamic> name = {'FullName': fullName.text.trim()};
+//       Map<String, dynamic> name = {'Username': username.text.trim()};
 //       await userRepository.updateSingleField(name);
 //
-//       // update the Rx user value
-//       userController.user.value.fullName = fullName.text.trim();
+//       userController.user.value.username = username.text.trim();
 //
-//       // remove loader
 //       TFullScreenLoader.stopLoading();
-//
-//       // show success message
 //       TLoaders.successSnackBar(title: 'Selamat', message: 'Nama anda berhasil diupdate.');
 //
-//       // move to previous screen
 //       Get.off(() => NavigationMenu());
 //     } catch (e) {
 //       TFullScreenLoader.stopLoading();
@@ -70,8 +54,7 @@
 //     }
 //   }
 // }
-///
-
+///-----------------
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/common/widgets/loaders/loaders.dart';
@@ -84,54 +67,59 @@ import 'package:ta_ecommerce/view/personalization/profile/profile.dart';
 
 import '../utils/network_manager.dart';
 
-class UpdateNameController extends GetxController {
-  static UpdateNameController get instance => Get.find();
+/// controller to manage user-related functionality.
+class UpdateUsernameController extends GetxController {
+  static UpdateUsernameController get instance => Get.find();
 
-  final fullName = TextEditingController();
+  final username = TextEditingController();
   final userController = UserController.instance;
   final userRepository = Get.put(UserRepository());
-  final updateUserNameFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> updateUsernameFormKey = GlobalKey<FormState>();
 
+  // init user data when Home Screen appears
   @override
   void onInit() {
-    initializeNames();
+    initializeUsername();
     super.onInit();
   }
 
-  Future<void> initializeNames() async {
-    fullName.text = userController.user.value.fullName ?? '';
+  /// fetch user record
+  Future<void> initializeUsername() async {
+    username.text = userController.user.value.username;
   }
 
-  Future<void> updateUserName() async {
+  Future<void> updateUsername() async {
     try {
+      // start loading
       TFullScreenLoader.openLoadingDialog('Sedang mengupdate informasi anda...', TImages.docerAnimation);
 
+      // check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        TFullScreenLoader.stopLoading();
+        TFullScreenLoader.stopLoading(); // remove loader
         return;
       }
 
-      if (!updateUserNameFormKey.currentState!.validate()) {
-        TFullScreenLoader.stopLoading();
+      // form validation
+      if (!updateUsernameFormKey.currentState!.validate()) {
+        TFullScreenLoader.stopLoading(); // remove loader
         return;
       }
 
-      final newName = fullName.text.trim();
-      if (newName == userController.user.value.fullName) {
-        TFullScreenLoader.stopLoading();
-        TLoaders.warningSnackBar(title: 'Info', message: 'Tidak ada perubahan yang dibuat.');
-        return;
-      }
-
-      Map<String, dynamic> name = {'fullName': newName};
+      // update user's username in the firebase firestore
+      Map<String, dynamic> name = {'Username': username.text.trim()};
       await userRepository.updateSingleField(name);
 
-      userController.user.value.fullName = newName;
+      // update the Rx user value
+      userController.user.value.updateUsername(username.text.trim());
 
+      // remove loader
       TFullScreenLoader.stopLoading();
-      TLoaders.successSnackBar(title: 'Selamat', message: 'Nama anda berhasil diupdate.');
 
+      // show success message
+      TLoaders.successSnackBar(title: 'Selamat', message: 'Username anda berhasil diupdate.');
+
+      // move to previous screen
       Get.off(() => NavigationMenu());
     } catch (e) {
       TFullScreenLoader.stopLoading();

@@ -9,6 +9,7 @@ import 'package:ta_ecommerce/common/widgets/text/section_heading.dart';
 import 'package:ta_ecommerce/controller/auth_controller/user_controller.dart';
 import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
+import 'package:ta_ecommerce/view/personalization/profile/widget/change_username.dart';
 
 import 'widget/change_name.dart';
 import 'widget/profile_menu.dart';
@@ -61,7 +62,12 @@ class ProfileScreen extends StatelessWidget {
                 onPressed: () => Get.to(() => ChangeName()),
                 icon: Iconsax.arrow_right_34,
               ),
-              TProfileMenu(title: 'Username', value: controller.user.value.username),
+              TProfileMenu(
+                title: 'Username',
+                value: controller.user.value.username,
+                onPressed: () => Get.to(() => ChangeUsername()),
+                icon: Iconsax.arrow_right_34,
+              ),
 
               const SizedBox(height: TSizes.spaceBtwItem / 2),
               Divider(),

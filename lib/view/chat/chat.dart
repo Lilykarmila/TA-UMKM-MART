@@ -49,7 +49,7 @@ class ChatScreen extends StatelessWidget {
                     merchantModel: MerchantModel(
                       id: merchantList[index].uid,
                       image: merchantList[index].profilePicture,
-                      name: merchantList[index].fullName,
+                      name: merchantList[index].username,
                       isFeatured: true,
                       description: merchantList[index].updateTime,
                       type: merchantList[index].type.toString(),

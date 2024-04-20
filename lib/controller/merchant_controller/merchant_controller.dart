@@ -65,6 +65,7 @@ import 'package:ta_ecommerce/view/admin/home_admin.dart';
 
 import '../../data/repositories/merchant_repository.dart';
 import '../../model/merchant_model.dart';
+import '../../navigation_menu.dart';
 import '../../utils/constans/sizes.dart';
 
 class MerchantController extends GetxController {
@@ -102,6 +103,26 @@ class MerchantController extends GetxController {
     }
   }
 
+  /// -- Load all merchants
+  Future<void> fetchAllMerchants() async {
+    try {
+      // show loader while loading merchants
+      isLoading.value = true;
+
+      final merchants = await merchantRepository.getAllMerchants();
+
+      // Hapus data user selain type: merchant
+      merchants.retainWhere((merchant) => merchant.type == 'merchant');
+
+      allMerchants.assignAll(merchants as Iterable<MerchantModel>);
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      // stop loader
+      isLoading.value = false;
+    }
+  }
+
   /// -- get merchant for category
 
   /// -- get merchant specific products from your data source
@@ -116,6 +137,7 @@ class MerchantController extends GetxController {
     }
   }
 
+  /// ------------------------------------ HAPPUS MERCHANT
   void deleteMerchantAccountWarningPopup(String merchantId) {
     Get.defaultDialog(
       contentPadding: EdgeInsets.all(TSizes.md),
@@ -144,7 +166,7 @@ class MerchantController extends GetxController {
   Future<void> deleteMerchantAccount(String merchantId) async {
     try {
       await merchantRepository.deleteMerchant(merchantId);
-      Get.offAll(() => HomeAdminScreen());
+      Get.offAll(() => NavigationMenu());
     } catch (e) {
       print('Error deleting merchant account: $e'); // Ini akan mencetak pesan error yang lebih spesifik
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

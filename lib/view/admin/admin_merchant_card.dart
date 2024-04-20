@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/model/merchant_model.dart';
+import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
 
 import '../../../utils/constans/enums.dart';
@@ -28,34 +29,29 @@ class AdminMerchantCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: TRoundedContainer(
+        borderColor: TColors.primaryColor,
         padding: EdgeInsets.all(TSizes.sm),
         showBorder: showBorder,
         backgroundColor: Colors.transparent,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             /// icon
-            ///
-            Flexible(
-              child: Container(
-                // color: Colors.orange,
-                child: TCircularImage(
-                  isNetworkImage: true,
-                  image: merchant.image,
-                  backgroundColor: Colors.transparent,
-                  // overlayColor: isDark ? Colors.white : TColors.black,
-                ),
+            Container(
+              // color: Colors.orange,
+              child: TCircularImage(
+                isNetworkImage: true,
+                image: merchant.image,
+                backgroundColor: Colors.transparent,
+                // overlayColor: isDark ? Colors.white : TColors.black,
               ),
             ),
-            SizedBox(height: TSizes.spaceBtwItem / 2),
+            SizedBox(width: TSizes.spaceBtwItem / 2),
 
             /// text
             Expanded(
-              child: Row(
-                children: [
-                  TMerchantWithIcon(title: merchant.name, brandTextSize: TextSizes.medium),
-                ],
-              ),
+              child: TMerchantWithIcon(title: merchant.name, brandTextSize: TextSizes.medium),
             ),
             Icon(Iconsax.arrow_right_34, size: 18),
           ],
@@ -64,6 +60,3 @@ class AdminMerchantCard extends StatelessWidget {
     );
   }
 }
-
-/// -------------- //
-///----------//

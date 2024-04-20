@@ -124,7 +124,7 @@ class UpdateNameController extends GetxController {
         return;
       }
 
-      Map<String, dynamic> name = {'fullName': newName};
+      Map<String, dynamic> name = {'FullName': newName};
       await userRepository.updateSingleField(name);
 
       userController.user.value.fullName = newName;

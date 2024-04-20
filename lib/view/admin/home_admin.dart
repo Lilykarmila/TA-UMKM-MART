@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:ta_ecommerce/utils/constans/sizes.dart';
 import 'package:ta_ecommerce/view/admin/admin_merchant_profile.dart';
 import '../../common/widgets/loaders/merchant_shimmer.dart';
 import '../../common/widgets/merchant/merchant_card.dart';
@@ -20,24 +23,50 @@ class HomeAdminScreen extends StatefulWidget {
 class _HomeAdminScreenState extends State<HomeAdminScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameControllerr = TextEditingController();
   bool _passwordVisible = false;
 
   void _registerUser() async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
-    if (email.isEmpty || password.isEmpty) {
+    String username = _usernameControllerr.text.trim();
+
+    if (email.isEmpty || password.isEmpty || username.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Email and password cannot be empty')),
+        const SnackBar(content: Text('Username, email, and password cannot be empty')),
       );
       return;
     }
+
     try {
-      await AuthenticationRepository.instance.registerWithEmailAndPassword(email, password);
+      // Mendaftarkan pengguna
+      UserCredential userCredential =
+          await AuthenticationRepository.instance.registerWithEmailAndPassword(email, password);
+
+      // Waktu saat ini
+      Timestamp currentTime = Timestamp.now();
+
+      // Menyimpan informasi pengguna ke Firestore
+      await FirebaseFirestore.instance.collection('Users').doc(userCredential.user!.uid).set({
+        'Username': username,
+        'Email': email,
+        'FullName': username, // Anda dapat mengganti ini dengan nama lengkap jika diperlukan
+        'ProfilePicture': '', // URL gambar profil, jika ada
+        'Type': 'merchant',
+        'Uid': userCredential.user!.uid,
+        'CreationTime': currentTime,
+        'LastSignIn': currentTime,
+        'UpdateTime': currentTime,
+      });
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('User registered successfully')),
       );
-      Navigator.of(context).pop(); // Close the dialog after successful registration
+      // Refresh data setelah pendaftaran berhasil
+      Get.find<MerchantController>().fetchAllMerchants();
+      Navigator.of(context).pop(); // Tutup dialog setelah pendaftaran berhasil
     } catch (e) {
+      print('Exception caught: $e'); // Tambahkan baris ini
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to register user: $e')),
       );
@@ -49,36 +78,40 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Register User'),
-        content: SingleChildScrollView(
-          // Added SingleChildScrollView to prevent overflow
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Email'),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              TextField(
-                controller: _passwordController,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  prefixIcon: const Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
-                    },
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: _usernameControllerr,
+              decoration: const InputDecoration(labelText: 'Username'),
+              keyboardType: TextInputType.name,
+            ),
+            SizedBox(height: TSizes.spaceBtwItem),
+            TextField(
+              controller: _emailController,
+              decoration: const InputDecoration(labelText: 'Email'),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(height: TSizes.spaceBtwItem),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _passwordVisible ? Icons.visibility : Icons.visibility_off,
                   ),
+                  onPressed: () {
+                    setState(() {
+                      _passwordVisible = !_passwordVisible;
+                    });
+                  },
                 ),
-                obscureText: !_passwordVisible,
               ),
-            ],
-          ),
+              obscureText: !_passwordVisible,
+            ),
+          ],
         ),
         actions: [
           TextButton(
@@ -99,13 +132,12 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
     Get.put(UserController());
   }
 
-  @override
   Widget build(BuildContext context) {
-    final merchantController =
-        Get.find<MerchantController>(); // Gunakan Get.find untuk mendapatkan instance yang sudah ada
+    final merchantController = Get.find<MerchantController>();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Manage Users'),
+        title: const Text('Kelola User'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
@@ -113,8 +145,9 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace / 2),
+        child: ListView(
           children: [
             Obx(() {
               if (merchantController.isLoading.value) {
@@ -125,19 +158,20 @@ class _HomeAdminScreenState extends State<HomeAdminScreen> {
                     child: Text('Data Tidak Ditemukan!',
                         style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white)));
               }
-
               return ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-
-                // gri
                 itemCount: merchantController.allMerchants.length,
+                itemExtent: 90, // Tinggi tetap untuk setiap item
                 itemBuilder: (_, index) {
                   final merchant = merchantController.allMerchants[index];
-                  return AdminMerchantCard(
-                    merchant: merchant,
-                    showBorder: true,
-                    onTap: () => Get.to(() => AdminMerchantProfileScreen(merchant: merchant)),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0), // Jarak vertikal antar card
+                    child: AdminMerchantCard(
+                      merchant: merchant,
+                      showBorder: true,
+                      onTap: () => Get.to(() => AdminMerchantProfileScreen(merchant: merchant)),
+                    ),
                   );
                 },
               );

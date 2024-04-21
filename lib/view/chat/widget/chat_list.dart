@@ -5,15 +5,17 @@ import 'package:ta_ecommerce/common/widgets/images/t_circular_image.dart';
 import 'package:ta_ecommerce/common/widgets/images/t_rounded_image.dart';
 import 'package:ta_ecommerce/model/chat_model.dart';
 import 'package:ta_ecommerce/model/merchant_model.dart';
+import 'package:ta_ecommerce/model/user_model.dart';
 import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_room.dart';
 
 class ChatList extends StatefulWidget {
-  const ChatList({Key? key, required this.merchantModel, this.chatModel}) : super(key: key);
-  final MerchantModel merchantModel;
+  const ChatList({Key? key, this.merchant, this.chatModel, required this.userModel}) : super(key: key);
+  final MerchantModel? merchant;
   final ChatModel? chatModel;
+  final UserModel userModel;
 
   @override
   State<ChatList> createState() => _ChatListState();
@@ -25,11 +27,11 @@ class _ChatListState extends State<ChatList> {
     final chatModel = ChatModel();
     return GestureDetector(
       onTap: () => Get.to(ChatRoomPage(
-        merchantImage: widget.merchantModel.image,
-        merchantName: widget.merchantModel.name,
-        merchantId: widget.merchantModel.id,
-        merchantType: widget.merchantModel.type.toString(),
-        // merchantType: widget.merchantModel.type.toString(),
+        merchantImage: widget.userModel.profilePicture,
+        merchantName: widget.userModel.username,
+        merchantId: widget.userModel.uid,
+        merchantType: widget.userModel.type.toString(),
+        // merchantType: widget.merchant.type.toString(),
       )),
       child: Container(
         color: Colors.white,
@@ -37,15 +39,15 @@ class _ChatListState extends State<ChatList> {
           children: [
             Row(
               children: [
-                // TCircleAvatarImage(backgroundImage: merchantModel.image, isNetworkImage: true),
-                TCircularImage(image: widget.merchantModel.image, isNetworkImage: true),
+                // TCircleAvatarImage(backgroundImage: merchant.image, isNetworkImage: true),
+                TCircularImage(image: widget.userModel.profilePicture, isNetworkImage: true),
                 // Image.asset(TImages.categoryFashion, width: TSizes.icosLg),
                 SizedBox(width: TSizes.spaceBtwItem),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.merchantModel.name, style: Theme.of(context).textTheme.titleSmall),
+                      Text(widget.userModel.username, style: Theme.of(context).textTheme.titleSmall),
                       // Text('JL. HEA Mokodompit Lr. Mata Air 2',
                       //     style: Theme.of(context).textTheme.labelMedium, overflow: TextOverflow.ellipsis),
                     ],

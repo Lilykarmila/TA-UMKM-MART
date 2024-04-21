@@ -56,7 +56,7 @@ class ChatController extends GetxController {
       };
 
       // Send the POST request to Firestore endpoint
-      var url = Uri.parse('https://964b-114-4-125-62.ngrok-free.app/api/encrypt');
+      var url = Uri.parse('https://fe5f-125-167-118-241.ngrok-free.app/api/encrypt');
       var response = await http.post(
         url,
         body: requestBody,

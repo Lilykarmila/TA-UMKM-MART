@@ -13,6 +13,7 @@ import 'package:ta_ecommerce/utils/exceptions/firebase_exceptions.dart';
 import '../../model/product_model.dart';
 import '../../utils/exceptions/platform_exceptions.dart';
 import '../services/firebase_storage_service.dart';
+
 class ChatRepository extends GetxController {
   static ChatRepository get instance => Get.find();
   final repository = Get.put(MerchantRepository());
@@ -38,31 +39,30 @@ class ChatRepository extends GetxController {
   //     throw 'Something went wrong, Please try again';
   //   }
   // }
-  Stream<List<UserModel>> getListChatFromUserLogin(String userId)  {
+  Stream<List<UserModel>> getListChatFromUserLogin(String userId) {
     try {
       final service = Get.put(ChatServices());
       return service.getListChatFromUserLogin(userId);
-    }
-    catch(e){
-      throw e.toString();
-    }
-  }
-  void sendMessages(UserModel user, String receiverId, String receiverName, String receiverEmail, String receiverImage, String message){
-    try {
-      final service = Get.put(ChatServices());
-      service.sendMessage(user, receiverId, receiverName, receiverEmail, receiverImage, message);
-    }
-    catch(e){
+    } catch (e) {
       throw e.toString();
     }
   }
 
-  Stream<QuerySnapshot> getMessages(String userId, String otherUserId){
+  void sendMessages(UserModel user, String receiverId, String receiverName, String receiverEmail, String receiverImage,
+      String message) {
+    try {
+      final service = Get.put(ChatServices());
+      service.sendMessage(user, receiverId, receiverName, receiverEmail, receiverImage, message);
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  Stream<QuerySnapshot> getMessages(String userId, String otherUserId) {
     try {
       final service = Get.put(ChatServices());
       return service.getMessages(userId, otherUserId);
-    }
-    catch(e){
+    } catch (e) {
       throw e.toString();
     }
   }

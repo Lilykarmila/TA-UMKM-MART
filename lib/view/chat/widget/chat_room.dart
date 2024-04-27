@@ -6,6 +6,7 @@ import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_bubble_widget.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_input.dart';
+import '../../../model/product_model.dart';
 import 'header_detail_chat.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -17,6 +18,7 @@ class ChatRoomPage extends StatelessWidget {
     required this.merchantId,
     required this.merchantImage,
     required this.merchantType,
+    this.product,
   }) : super(key: key);
 
   final String merchantName;
@@ -24,11 +26,13 @@ class ChatRoomPage extends StatelessWidget {
   final String merchantImage;
   final String merchantType;
 
+  final ProductModel? product; // Deklarasi variabel untuk menyimpan produk
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ChatController());
 
-    final url = 'https://7771-125-167-112-57.ngrok-free.app/api/decrypt';
+    final url = 'https://cc23-103-144-227-217.ngrok-free.app/api/decrypt';
 
     final loginId = controller.getLoginId();
     var key = "";
@@ -47,6 +51,15 @@ class ChatRoomPage extends StatelessWidget {
       ),
       body: Column(
         children: [
+          if (product != null)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                leading: Image.network(product!.thumbnail, width: 50, height: 50),
+                title: Text(product!.title),
+                subtitle: Text("Harga: ${product!.price}"),
+              ),
+            ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -99,6 +112,7 @@ class ChatRoomPage extends StatelessWidget {
                             return TChatBubble(
                               isSender: data["senderId"] == loginId,
                               text: data["message"],
+                              timestamp: data["timestamp"] as Timestamp,
                             );
                           },
                         );

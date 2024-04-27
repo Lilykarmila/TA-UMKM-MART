@@ -8,7 +8,8 @@ import 'package:ta_ecommerce/utils/constans/sizes.dart';
 import '../../../controller/chat_controller/chat_controller.dart';
 
 class TChatInput extends StatelessWidget {
-  const TChatInput({Key? key, required this.merchantId, required this.merchantImage, required this.merchantName}) : super(key: key);
+  const TChatInput({Key? key, required this.merchantId, required this.merchantImage, required this.merchantName})
+      : super(key: key);
   final String merchantId;
   final String merchantName;
   final String merchantImage;
@@ -22,10 +23,6 @@ class TChatInput extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              // decoration: BoxDecoration(color: TColors.grey, borderRadius: BorderRadius.circular(12)),
-              // height: 80,
-              // padding: EdgeInsets.symmetric(vertical: 5),
-
               child: Center(
                 child: TextFormField(
                   // style: Theme.of(context).textTheme.labelMedium,
@@ -41,7 +38,7 @@ class TChatInput extends StatelessWidget {
           SizedBox(width: 5),
           GestureDetector(
             onTap: () {
-              controller.sendMessages(merchantId, merchantName, "", merchantImage, _textController.text );
+              controller.sendMessages(merchantId, merchantName, "", merchantImage, _textController.text);
               _textController.clear();
             },
             child: Image.asset(

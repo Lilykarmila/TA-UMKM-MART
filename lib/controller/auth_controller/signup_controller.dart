@@ -16,7 +16,7 @@ class SignupController extends GetxController {
   /// variable
   final hidePassword = true.obs; // observable for hiding/showing password
   final privacyPolicy = true.obs;
-  final isMerchant = false.obs;// observable for hiding/showing password
+  final isMerchant = false.obs; // observable for hiding/showing password
   final email = TextEditingController();
   final fullName = TextEditingController();
   final username = TextEditingController();
@@ -65,7 +65,7 @@ class SignupController extends GetxController {
           profilePicture: '',
           creationTime: userCredential.user!.metadata.creationTime!.toIso8601String(),
           lastSignInTime: userCredential.user!.metadata.lastSignInTime!.toIso8601String(),
-          type: isMerchant.value?"merchant":"user",
+          type: isMerchant.value ? "merchant" : "user",
           updateTime: DateTime.now().toIso8601String());
 
       final userRepository = Get.put(UserRepository());

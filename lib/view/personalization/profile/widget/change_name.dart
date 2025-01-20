@@ -14,6 +14,7 @@ class ChangeName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UpdateNameController());
+
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,
@@ -38,7 +39,7 @@ class ChangeName extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: controller.fullName,
-                    validator: (value) => TValidator.validateEmptyText('Full Name', value),
+                    validator: (value) => TValidator.validateEmptyText('Nama Lengkap', value),
                     expands: false,
                     decoration: const InputDecoration(labelText: TTexts.fulllName, prefixIcon: Icon(Iconsax.user)),
                   ),

@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
+import 'package:ta_ecommerce/view/admin/home_admin.dart';
 import 'package:ta_ecommerce/view/chat/chat.dart';
 import 'package:ta_ecommerce/view/personalization/settings/settings.dart';
 import 'package:ta_ecommerce/view/screens/all_products/product_input/product_input.dart';
@@ -22,7 +23,7 @@ class NavigationMenu extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Obx(
-              () => controller.screensFuture.isNotEmpty
+          () => controller.screensFuture.isNotEmpty
               ? _buildNavigationScaffold(controller, darkMode)
               : const Center(child: CircularProgressIndicator()),
         ),
@@ -33,9 +34,8 @@ class NavigationMenu extends StatelessWidget {
   Widget _buildNavigationScaffold(NavigationController controller, bool darkMode) {
     return Scaffold(
       bottomNavigationBar: Obx(
-            () {
-          final List<NavigationDestination> destinations =
-              controller.destinations.value;
+        () {
+          final List<NavigationDestination> destinations = controller.destinations.value;
           return NavigationBar(
             height: 80,
             elevation: 0,
@@ -44,24 +44,19 @@ class NavigationMenu extends StatelessWidget {
               controller.selectedIndex.value = index;
             },
             backgroundColor: darkMode ? TColors.black : Colors.white,
-            indicatorColor: darkMode
-                ? TColors.white.withOpacity(0.1)
-                : TColors.black.withOpacity(0.1),
+            indicatorColor: darkMode ? TColors.white.withOpacity(0.1) : TColors.black.withOpacity(0.1),
             destinations: destinations,
           );
         },
       ),
       body: Obx(
-            () => controller.screensFuture.isNotEmpty
+        () => controller.screensFuture.isNotEmpty
             ? controller.screensFuture[controller.selectedIndex.value]
             : const Center(child: CircularProgressIndicator()),
       ),
     );
   }
 }
-
-
-
 
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
@@ -104,6 +99,13 @@ class NavigationController extends GetxController {
         const NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
       ];
     }
+    if (userType == "admin") {
+      destinationsList = [
+        NavigationDestination(icon: Icon(Iconsax.home), label: 'Beranda'),
+        NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
+      ];
+    }
+    ;
 
     destinations.value = destinationsList;
   }
@@ -122,6 +124,12 @@ class NavigationController extends GetxController {
         const ProductInputPage(),
         const ChatScreen(),
         const SettingsScreen(),
+      ];
+    }
+    if (userType == "admin") {
+      screens = [
+        HomeAdminScreen(),
+        SettingsScreen(),
       ];
     }
 

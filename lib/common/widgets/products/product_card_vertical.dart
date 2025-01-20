@@ -42,30 +42,8 @@ class TProductCardVertical extends StatelessWidget {
 
               // padding: EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
-              child: Stack(
-                children: [
-                  /// thumbnail image
-                  Center(
-                      child: TRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true)),
-
-                  /// sale tag
-                  // Positioned(
-                  //   top: 12,
-                  //   child: TRoundedContainer(
-                  //     radius: TSizes.sm,
-                  //     backgroundColor: TColors.secondary.withOpacity(0.8),
-                  //     padding: EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
-                  //     child: Text(
-                  //       '25%',
-                  //       style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
-                  //     ),
-                  //   ),
-                  // ),
-
-                  /// favorit button
-                  // Positioned(top: 0, right: 0, child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red)),
-                ],
-              ),
+              child: Center(
+                  child: TRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true)),
             ),
             const SizedBox(height: TSizes.spaceBtwItem / 2),
 

@@ -1,7 +1,5 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ta_ecommerce/model/product_model.dart';
-import 'package:ta_ecommerce/model/user_model.dart';
 
 // class ChatModel {
 //   String? chat;

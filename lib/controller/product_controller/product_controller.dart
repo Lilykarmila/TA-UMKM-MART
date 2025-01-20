@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/common/widgets/loaders/loaders.dart';
 import 'package:ta_ecommerce/model/product_model.dart';
-import 'package:ta_ecommerce/utils/constans/enums.dart';
 
 import '../../data/repositories/product_repository.dart';
 

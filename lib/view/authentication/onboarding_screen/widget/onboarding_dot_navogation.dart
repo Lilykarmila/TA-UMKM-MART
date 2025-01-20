@@ -8,7 +8,7 @@ import 'package:ta_ecommerce/utils/devices/devices_utility.dart';
 import '../../../../utils/helper/helper_functions.dart';
 
 class onBoardingDotNavigation extends StatelessWidget {
-  onBoardingDotNavigation({
+  const onBoardingDotNavigation({
     super.key,
   });
 

@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/common/widgets/loaders/vertical_product_shimmer.dart';
 import 'package:ta_ecommerce/controller/product_controller/product_controller.dart';
-import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
 import 'package:ta_ecommerce/view/screens/all_products/all_product.dart';
 import 'package:ta_ecommerce/view/screens/home/widget/home_appbar.dart';
@@ -13,7 +11,6 @@ import '../../../common/widgets/layouts/grid_layout.dart';
 import '../../../common/widgets/products/product_card_vertical.dart';
 import '../../../common/widgets/text/section_heading.dart';
 import 'widget/home_categories.dart';
-import 'widget/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -73,12 +70,12 @@ class HomeScreen extends StatelessWidget {
                             title: 'Semua Produk UMKM',
                             futureMethod: controller.fetchAllFeaturedProducts(),
                           ))),
-                  SizedBox(height: TSizes.spaceBtwItem),
+                  const SizedBox(height: TSizes.spaceBtwItem),
 
                   /// Popular Product
 
                   Obx(() {
-                    if (controller.isLoading.value) return TVerticalProductShimmer();
+                    if (controller.isLoading.value) return const TVerticalProductShimmer();
                     if (controller.featuredProducts.isEmpty) {
                       return Center(
                           child: Text('Data tidak ditemukan!', style: Theme.of(context).textTheme.bodyMedium));

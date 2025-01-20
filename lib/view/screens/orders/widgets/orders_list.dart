@@ -14,9 +14,9 @@ class TOrderListItems extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       itemCount: 3,
-      separatorBuilder: (_, __) => SizedBox(height: TSizes.spaceBtwItem),
+      separatorBuilder: (_, __) => const SizedBox(height: TSizes.spaceBtwItem),
       itemBuilder: (_, index) => TRoundedContainer(
-        padding: EdgeInsets.all(TSizes.md),
+        padding: const EdgeInsets.all(TSizes.md),
         showBorder: true,
         backgroundColor: dark ? TColors.dark : TColors.light,
         child: Column(
@@ -25,8 +25,8 @@ class TOrderListItems extends StatelessWidget {
             Row(
               children: [
                 /// 1 - icon
-                Icon(Iconsax.ship),
-                SizedBox(width: TSizes.spaceBtwItem / 2),
+                const Icon(Iconsax.ship),
+                const SizedBox(width: TSizes.spaceBtwItem / 2),
 
                 /// 2 - status & date
                 Expanded(
@@ -47,12 +47,12 @@ class TOrderListItems extends StatelessWidget {
                 /// 3 - icon
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Iconsax.arrow_right_34, size: TSizes.icosSm),
+                  icon: const Icon(Iconsax.arrow_right_34, size: TSizes.icosSm),
                 )
               ],
             ),
 
-            SizedBox(height: TSizes.spaceBtwItem),
+            const SizedBox(height: TSizes.spaceBtwItem),
 
             /// row 2
             Row(
@@ -61,8 +61,8 @@ class TOrderListItems extends StatelessWidget {
                   child: Row(
                     children: [
                       /// 1 - icon
-                      Icon(Iconsax.tag),
-                      SizedBox(width: TSizes.spaceBtwItem / 2),
+                      const Icon(Iconsax.tag),
+                      const SizedBox(width: TSizes.spaceBtwItem / 2),
 
                       /// 2 - status & date
                       Expanded(
@@ -82,8 +82,8 @@ class TOrderListItems extends StatelessWidget {
                   child: Row(
                     children: [
                       /// 1 - icon
-                      Icon(Iconsax.calendar),
-                      SizedBox(width: TSizes.spaceBtwItem / 2),
+                      const Icon(Iconsax.calendar),
+                      const SizedBox(width: TSizes.spaceBtwItem / 2),
 
                       /// 2 - status & date
                       Expanded(

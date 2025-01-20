@@ -19,40 +19,40 @@ class TProductAttributes extends StatelessWidget {
       children: [
         /// selected attribut pricing description
         TRoundedContainer(
-          padding: EdgeInsets.all(TSizes.md),
+          padding: const EdgeInsets.all(TSizes.md),
           backgroundColor: dark ? TColors.darkerGrey : TColors.grey,
           child: Column(
             children: [
               /// title, price, stack status
               Row(
                 children: [
-                  TSectionHeading(title: 'Variasi', showActionButton: false),
-                  SizedBox(width: TSizes.spaceBtwItem),
+                  const TSectionHeading(title: 'Variasi', showActionButton: false),
+                  const SizedBox(width: TSizes.spaceBtwItem),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          TProductTitleText(title: 'Price', smallSize: true),
+                          const TProductTitleText(title: 'Price', smallSize: true),
 
                           /// actual price
-                          Text('\IDR 35k',
+                          Text('IDR 35k',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
                                   .apply(decoration: TextDecoration.lineThrough)),
 
-                          SizedBox(width: TSizes.spaceBtwItem),
+                          const SizedBox(width: TSizes.spaceBtwItem),
 
                           /// sale price
-                          TProductPriceText(price: '20')
+                          const TProductPriceText(price: '20')
                         ],
                       ),
 
                       /// stock
                       Row(
                         children: [
-                          TProductTitleText(title: 'Stock', smallSize: true),
+                          const TProductTitleText(title: 'Stock', smallSize: true),
                           Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
                         ],
                       )
@@ -62,7 +62,7 @@ class TProductAttributes extends StatelessWidget {
               ),
 
               /// description
-              TProductTitleText(
+              const TProductTitleText(
                 title: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
                 smallSize: true,
                 maxLines: 4,
@@ -70,14 +70,14 @@ class TProductAttributes extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: TSizes.spaceBtwItem),
+        const SizedBox(height: TSizes.spaceBtwItem),
 
         /// arrtibut
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TSectionHeading(title: 'Colors', showActionButton: false),
-            SizedBox(height: TSizes.spaceBtwItem / 2),
+            const TSectionHeading(title: 'Colors', showActionButton: false),
+            const SizedBox(height: TSizes.spaceBtwItem / 2),
             Wrap(
               spacing: 8,
               children: [
@@ -91,8 +91,8 @@ class TProductAttributes extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TSectionHeading(title: 'Size'),
-            SizedBox(height: TSizes.spaceBtwItem / 2),
+            const TSectionHeading(title: 'Size'),
+            const SizedBox(height: TSizes.spaceBtwItem / 2),
             Wrap(
               spacing: 8,
               children: [

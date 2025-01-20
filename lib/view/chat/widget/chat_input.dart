@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
@@ -14,10 +13,10 @@ class TChatInput extends StatelessWidget {
   final String merchantImage;
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _textController = TextEditingController();
+    final TextEditingController textController = TextEditingController();
     final controller = Get.put(ChatController());
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: Row(
         children: [
           Expanded(
@@ -29,20 +28,20 @@ class TChatInput extends StatelessWidget {
               child: Center(
                 child: TextFormField(
                   // style: Theme.of(context).textTheme.labelMedium,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Ketik pesan...',
                     hintStyle: TextStyle(color: TColors.darkerGrey),
                   ),
-                  controller: _textController,
+                  controller: textController,
                 ),
               ),
             ),
           ),
-          SizedBox(width: 5),
+          const SizedBox(width: 5),
           GestureDetector(
             onTap: () {
-              controller.sendMessages(merchantId, merchantName, "", merchantImage, _textController.text );
-              _textController.clear();
+              controller.sendMessages(merchantId, merchantName, "", merchantImage, textController.text );
+              textController.clear();
             },
             child: Image.asset(
               TImages.sendChat,

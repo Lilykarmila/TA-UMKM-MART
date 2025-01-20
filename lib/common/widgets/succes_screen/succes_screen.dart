@@ -4,7 +4,6 @@ import 'package:ta_ecommerce/common/styles/spacing_style.dart';
 
 import '../../../utils/constans/sizes.dart';
 import '../../../utils/constans/text_strings.dart';
-import '../../../utils/helper/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen(
@@ -27,13 +26,13 @@ class SuccessScreen extends StatelessWidget {
 
               /// title and subtitle
               Text(title, style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
-              SizedBox(height: TSizes.spaceBtwItem),
+              const SizedBox(height: TSizes.spaceBtwItem),
               Text(subTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// button
               SizedBox(
-                  width: double.infinity, child: ElevatedButton(onPressed: onPressed, child: Text(TTexts.tContinue))),
+                  width: double.infinity, child: ElevatedButton(onPressed: onPressed, child: const Text(TTexts.tContinue))),
             ],
           ),
         ),

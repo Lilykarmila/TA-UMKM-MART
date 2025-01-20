@@ -21,8 +21,8 @@ class TMerchantShowCase extends StatelessWidget {
       showBorder: true,
       borderColor: TColors.darkGrey,
       backgroundColor: Colors.transparent,
-      padding: EdgeInsets.all(TSizes.md),
-      margin: EdgeInsets.only(bottom: TSizes.spaceBtwItem),
+      padding: const EdgeInsets.all(TSizes.md),
+      margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItem),
       child: Column(
         children: [
           /// brand with product count
@@ -31,7 +31,7 @@ class TMerchantShowCase extends StatelessWidget {
             merchant: MerchantModel.empty(),
           ),
 
-          SizedBox(height: TSizes.spaceBtwItem),
+          const SizedBox(height: TSizes.spaceBtwItem),
 
           /// brand top3 product images
           Row(children: images.map((image) => brandTopProductImageWidget(image, context)).toList())
@@ -45,8 +45,8 @@ Widget brandTopProductImageWidget(String image, context) {
   return Expanded(
     child: TRoundedContainer(
       height: 100,
-      padding: EdgeInsets.all(TSizes.md),
-      margin: EdgeInsets.only(right: TSizes.sm),
+      padding: const EdgeInsets.all(TSizes.md),
+      margin: const EdgeInsets.only(right: TSizes.sm),
       backgroundColor: THelperFunctions.isDarkMode(context) ? TColors.darkerGrey : TColors.light,
       child: Image(fit: BoxFit.contain, image: AssetImage(image)),
     ),

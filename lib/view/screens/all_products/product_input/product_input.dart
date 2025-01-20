@@ -2,20 +2,19 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ta_ecommerce/controller/product_controller/product_controller.dart';
 import 'package:ta_ecommerce/model/category_model.dart';
 
-import '../../../../controller/product_controller/all_products_controller.dart';
 import '../../../../model/merchant_model.dart';
 import '../../../../model/product_model.dart';
 
 class ProductInputPage extends StatefulWidget {
+  const ProductInputPage({super.key});
+
   @override
   _ProductInputPageState createState() => _ProductInputPageState();
 }
@@ -85,10 +84,10 @@ class _ProductInputPageState extends State<ProductInputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Produk Toko'),
+        title: const Text('Produk Toko'),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {
               openAddProductDialog();
             },
@@ -99,18 +98,18 @@ class _ProductInputPageState extends State<ProductInputPage> {
         stream: FirebaseFirestore.instance.collection('Product').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           }
           if (snapshot.data!.docs.isEmpty) {
-            return Text('No products found.');
+            return const Text('No products found.');
           }
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-              print("id ${_merchantId}");
+              print("id $_merchantId");
               return data["Merchant"]["Id"] == _merchantId
                   ? ListTile(
                       title: Text(data['Title']),
@@ -148,7 +147,7 @@ class AddProductDialog extends StatefulWidget {
   final Function(String?) onCategoryChanged;
   final List<CategoryModel> categoryList;
 
-  AddProductDialog({required this.onSubmit, required this.onCategoryChanged, required this.categoryList});
+  const AddProductDialog({super.key, required this.onSubmit, required this.onCategoryChanged, required this.categoryList});
   @override
   _AddProductDialogState createState() => _AddProductDialogState();
 }
@@ -189,16 +188,16 @@ class _AddProductDialogState extends State<AddProductDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.white,
-      title: Text('Add Product'),
+      title: const Text('Add Product'),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Product Name'),
+              decoration: const InputDecoration(labelText: 'Product Name'),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             DropdownButtonFormField<CategoryModel>(
               value: selectedCategory,
               onChanged: (value) {
@@ -213,45 +212,45 @@ class _AddProductDialogState extends State<AddProductDialog> {
                   child: Text(product.name),
                 );
               }).toList(),
-              decoration: InputDecoration(labelText: 'Category'),
+              decoration: const InputDecoration(labelText: 'Category'),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: priceController,
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(labelText: 'Price'),
+              decoration: const InputDecoration(labelText: 'Price'),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: descriptionController,
               minLines: 3,
               maxLines: 6,
-              decoration: InputDecoration(labelText: 'Description'),
+              decoration: const InputDecoration(labelText: 'Description'),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 _pickImage(ImageSource.gallery);
               },
-              child: Text('Pick Image'),
+              child: const Text('Pick Image'),
             ),
             if (_imageFile != null) Image.file(_imageFile!),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),
       actions: <Widget>[
         TextButton(
-          child: Text('Cancel'),
+          child: const Text('Cancel'),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         TextButton(
-          child: Text('Submit'),
+          child: const Text('Submit'),
           onPressed: () async {
             String? imageUrl = await _uploadImageToStorage();
-            print("imageurl ${imageUrl}");
+            print("imageurl $imageUrl");
             widget.onSubmit(nameController.text, priceController.text, descriptionController.text, imageUrl);
             nameController.clear();
             priceController.clear();

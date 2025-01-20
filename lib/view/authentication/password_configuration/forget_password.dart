@@ -4,7 +4,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/controller/auth_controller/forget_password_controller.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
 import 'package:ta_ecommerce/utils/validators/validation.dart';
-import 'package:ta_ecommerce/view/authentication/password_configuration/reset_password.dart';
 
 import '../../../utils/constans/text_strings.dart';
 
@@ -17,15 +16,15 @@ class ForgetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// heading
             Text(TTexts.forgetPasswordTitle, style: Theme.of(context).textTheme.headlineMedium),
-            SizedBox(height: TSizes.spaceBtwItem),
+            const SizedBox(height: TSizes.spaceBtwItem),
             Text(TTexts.forgetPasswordSubTitle, style: Theme.of(context).textTheme.labelMedium),
-            SizedBox(height: TSizes.spaceBtwSections * 2),
+            const SizedBox(height: TSizes.spaceBtwSections * 2),
 
             /// text field
             Form(
@@ -33,17 +32,17 @@ class ForgetPassword extends StatelessWidget {
               child: TextFormField(
                 controller: controller.email,
                 validator: TValidator.validateEmail,
-                decoration: InputDecoration(prefixIcon: Icon(Iconsax.direct_right), labelText: TTexts.email),
+                decoration: const InputDecoration(prefixIcon: Icon(Iconsax.direct_right), labelText: TTexts.email),
               ),
             ),
-            SizedBox(height: TSizes.spaceBtwSections),
+            const SizedBox(height: TSizes.spaceBtwSections),
 
             /// submit button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () => controller.sendPasswordResetEmail(),
-                child: Text(TTexts.submit),
+                child: const Text(TTexts.submit),
               ),
             )
           ],

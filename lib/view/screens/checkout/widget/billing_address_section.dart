@@ -14,19 +14,19 @@ class TBillingAddressSection extends StatelessWidget {
       children: [
         TSectionHeading(title: 'Alamat pengiriman', buttonTitle: 'Ubah', onPressed: () {}),
         Text('Lily karmila', style: Theme.of(context).textTheme.bodyLarge),
-        SizedBox(height: TSizes.spaceBtwItem / 2),
+        const SizedBox(height: TSizes.spaceBtwItem / 2),
         Row(
           children: [
-            Icon(Icons.phone, color: TColors.grey, size: 16),
-            SizedBox(width: TSizes.spaceBtwItem),
+            const Icon(Icons.phone, color: TColors.grey, size: 16),
+            const SizedBox(width: TSizes.spaceBtwItem),
             Text('08877887878', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItem / 2),
+        const SizedBox(height: TSizes.spaceBtwItem / 2),
         Row(
           children: [
-            Icon(Icons.location_history, color: TColors.grey, size: 16),
-            SizedBox(width: TSizes.spaceBtwItem),
+            const Icon(Icons.location_history, color: TColors.grey, size: 16),
+            const SizedBox(width: TSizes.spaceBtwItem),
             Text('depan kampus uho', style: Theme.of(context).textTheme.bodyMedium, softWrap: true),
           ],
         ),

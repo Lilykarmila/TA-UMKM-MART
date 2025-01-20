@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ta_ecommerce/model/product_model.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
 
@@ -41,15 +40,15 @@ class ImagesController extends GetxController {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: TSizes.defaultSpace * 2, horizontal: TSizes.defaultSpace),
+                    padding: const EdgeInsets.symmetric(vertical: TSizes.defaultSpace * 2, horizontal: TSizes.defaultSpace),
                     child: CachedNetworkImage(imageUrl: image),
                   ),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  const SizedBox(height: TSizes.spaceBtwSections),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: SizedBox(
                       width: 150,
-                      child: OutlinedButton(onPressed: () => Get.back(), child: Text('Tutup')),
+                      child: OutlinedButton(onPressed: () => Get.back(), child: const Text('Tutup')),
                     ),
                   )
                 ],

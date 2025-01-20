@@ -20,13 +20,13 @@ class FavouriteScreen extends StatelessWidget {
         actions: [
           TCircularIcon(
             icon: Iconsax.add,
-            onPressed: () => Get.to(NavigationMenu()),
+            onPressed: () => Get.to(const NavigationMenu()),
           )
         ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               TGridLayout(itemCount: 6, itemBuilder: (_, index) => TProductCardVertical(product: ProductModel.empty()))

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ta_ecommerce/common/styles/spacing_style.dart';
-import 'package:ta_ecommerce/utils/constans/sizes.dart';
-import 'package:ta_ecommerce/utils/constans/text_strings.dart';
 import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
 import 'package:ta_ecommerce/view/authentication/login/widget/login_header.dart';
-import '../../../common/widgets/login_signup/form_divider.dart';
-import '../../../common/widgets/login_signup/social_buttons.dart';
 import 'widget/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -25,7 +20,7 @@ class LoginScreen extends StatelessWidget {
               TLoginHeader(dark: dark),
 
               /// form
-              TLoginForm(),
+              const TLoginForm(),
 
               /// divider
               // TFormDivider(dividerText: TTexts.orSignIpWith.capitalize!),

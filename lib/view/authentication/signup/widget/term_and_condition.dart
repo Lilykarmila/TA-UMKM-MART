@@ -28,7 +28,7 @@ class TTermAndConditionCheckbox extends StatelessWidget {
                       value: controller.privacyPolicy.value,
                       onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value),
                 )),
-            SizedBox(width: TSizes.spaceBtwItem),
+            const SizedBox(width: TSizes.spaceBtwItem),
             Text.rich(
               TextSpan(children: [
                 TextSpan(text: '${TTexts.iAgreeTo} ', style: Theme.of(context).textTheme.bodySmall),
@@ -61,7 +61,7 @@ class TTermAndConditionCheckbox extends StatelessWidget {
                       value: controller.isMerchant.value,
                       onChanged: (value) => controller.isMerchant.value = !controller.isMerchant.value),
                 )),
-            SizedBox(width: TSizes.spaceBtwItem),
+            const SizedBox(width: TSizes.spaceBtwItem),
             Text('Sign Up as Merchant', style: Theme.of(context).textTheme.bodySmall),
           ],
         ),

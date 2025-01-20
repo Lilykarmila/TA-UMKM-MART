@@ -16,17 +16,17 @@ class TBillingPaymentSection extends StatelessWidget {
     return Column(
       children: [
         TSectionHeading(title: 'Metode pembayaran', buttonTitle: 'Pilih', onPressed: () {}),
-        SizedBox(height: TSizes.spaceBtwItem / 2),
+        const SizedBox(height: TSizes.spaceBtwItem / 2),
         Row(
           children: [
             TRoundedContainer(
               width: 60,
               height: 35,
               backgroundColor: dark ? TColors.light : TColors.white,
-              padding: EdgeInsets.all(TSizes.sm),
-              child: Image(image: AssetImage(TImages.paymentBni), fit: BoxFit.contain),
+              padding: const EdgeInsets.all(TSizes.sm),
+              child: const Image(image: AssetImage(TImages.paymentBni), fit: BoxFit.contain),
             ),
-            SizedBox(width: TSizes.spaceBtwItem / 2),
+            const SizedBox(width: TSizes.spaceBtwItem / 2),
             Text('Bank BNI', style: Theme.of(context).textTheme.bodyLarge),
           ],
         )

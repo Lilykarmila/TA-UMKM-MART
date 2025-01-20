@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ta_ecommerce/common/widgets/images/t_circular_image.dart';
-import 'package:ta_ecommerce/common/widgets/products/rounded_container.dart';
 import 'package:ta_ecommerce/common/widgets/text/product_price_text.dart';
 import 'package:ta_ecommerce/common/widgets/text/product_title_text.dart';
 import 'package:ta_ecommerce/common/widgets/text/t_category_title_text_with_icon.dart';
@@ -26,11 +25,11 @@ class TProductMetaData extends StatelessWidget {
       children: [
         /// price
         TProductPriceText(price: controller.getProductPrice(product), isLarge: true),
-        SizedBox(width: TSizes.spaceBtwItem / 1.5),
+        const SizedBox(width: TSizes.spaceBtwItem / 1.5),
 
         /// title
         TProductTitleText(title: product.title),
-        SizedBox(width: TSizes.spaceBtwItem / 1.5),
+        const SizedBox(width: TSizes.spaceBtwItem / 1.5),
 
         // Row(
         //   children: [

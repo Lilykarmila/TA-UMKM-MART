@@ -32,10 +32,10 @@ class TCircleAvatarImage extends StatelessWidget {
             fit: fit,
             color: overlayColor,
             imageUrl: backgroundImage,
-            progressIndicatorBuilder: (context, url, downloadProgress) => TShimmerEffect(width: 55, height: 55),
-            errorWidget: (context, url, error) => Icon(Icons.error),
+            progressIndicatorBuilder: (context, url, downloadProgress) => const TShimmerEffect(width: 55, height: 55),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           )
-        : Container(
+        : SizedBox(
             width: 40,
             height: 40,
             child: CircleAvatar(

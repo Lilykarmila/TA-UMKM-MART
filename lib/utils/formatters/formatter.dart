@@ -7,6 +7,6 @@ class TFormatter {
   }
 
   static String formatCurrency(double amount) {
-    return NumberFormat.currency(locale: 'IND', symbol: '\IDR').format(amount);
+    return NumberFormat.currency(locale: 'IND', symbol: 'IDR').format(amount);
   }
 }

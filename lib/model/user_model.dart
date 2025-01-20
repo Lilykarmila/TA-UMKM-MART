@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:intl/intl.dart';
 
 /// model class respresenting user data
 class UserModel {
@@ -30,7 +28,7 @@ class UserModel {
   });
 
   ///---------------------------- helper function to  get the full name
-  String get fullNames => '$fullName';
+  String get fullNames => fullName;
 
   ///----------------------------- static function to split full name
   static String nameParts(fullNames) => fullNames.split("");

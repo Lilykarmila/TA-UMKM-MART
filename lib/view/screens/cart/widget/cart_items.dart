@@ -17,20 +17,20 @@ class TCartItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
-      separatorBuilder: (_, __) => SizedBox(height: TSizes.spaceBtwSections),
+      separatorBuilder: (_, __) => const SizedBox(height: TSizes.spaceBtwSections),
       itemCount: 2,
       itemBuilder: (_, index) => Column(
         children: [
           /// cart item
-          TCartItem(),
-          if (showAddRemoveButton) SizedBox(height: TSizes.spaceBtwItem),
+          const TCartItem(),
+          if (showAddRemoveButton) const SizedBox(height: TSizes.spaceBtwItem),
 
           /// add remove button with total price
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if (showAddRemoveButton)
-                Row(
+                const Row(
                   children: [
                     SizedBox(width: 70),
 
@@ -40,7 +40,7 @@ class TCartItems extends StatelessWidget {
                 ),
 
               /// total price
-              TProductPriceText(price: '230'),
+              const TProductPriceText(price: '230'),
             ],
           )
         ],

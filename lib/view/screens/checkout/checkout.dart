@@ -26,23 +26,23 @@ class CheckoutScreen extends StatelessWidget {
           showBackArrow: true, title: Text('Detail Pesanan ', style: Theme.of(context).textTheme.headlineSmall)),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               /// items in cart
-              TCartItems(showAddRemoveButton: false),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const TCartItems(showAddRemoveButton: false),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// coupon textfield
-              TCouponCode(),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const TCouponCode(),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// billing section
               TRoundedContainer(
                 showBorder: true,
-                padding: EdgeInsets.all(TSizes.md),
+                padding: const EdgeInsets.all(TSizes.md),
                 backgroundColor: dark ? TColors.black : TColors.white,
-                child: Column(
+                child: const Column(
                   children: [
                     /// pricing
                     TBillingAmountSection(),
@@ -74,9 +74,9 @@ class CheckoutScreen extends StatelessWidget {
                 image: TImages.deliveredEmailIllustrations,
                 title: 'Payment Succes',
                 subTitle: 'nakjhkhsadbksha',
-                onPressed: () => Get.offAll(() => NavigationMenu()),
+                onPressed: () => Get.offAll(() => const NavigationMenu()),
               )),
-          child: Text('Checkout \IDR 240'),
+          child: const Text('Checkout IDR 240'),
         ),
       ),
     );

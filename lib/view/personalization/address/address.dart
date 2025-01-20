@@ -15,14 +15,14 @@ class UserAddressScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: TColors.primaryColor,
-        onPressed: () => Get.to(() => AddNewAddress()),
-        child: Icon(Iconsax.add, color: TColors.white),
+        onPressed: () => Get.to(() => const AddNewAddress()),
+        child: const Icon(Iconsax.add, color: TColors.white),
       ),
       appBar: TAppBar(
         showBackArrow: true,
         title: Text('Addresses', style: Theme.of(context).textTheme.headlineSmall),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(TSizes.defaultSpace),
           child: Column(

@@ -1,17 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/controller/product_controller/images_controller.dart';
 import 'package:ta_ecommerce/model/product_model.dart';
 import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/custom_shape/curved_edges_widget.dart';
-import '../../../../../common/widgets/icons/t_circular_icon.dart';
 import '../../../../../common/widgets/images/t_rounded_image.dart';
 import '../../../../../utils/constans/colors.dart';
-import '../../../../../utils/constans/image_strings.dart';
 import '../../../../../utils/constans/sizes.dart';
 
 class TProductImageSlider extends StatelessWidget {
@@ -63,8 +60,8 @@ class TProductImageSlider extends StatelessWidget {
                   itemCount: images.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  physics: AlwaysScrollableScrollPhysics(),
-                  separatorBuilder: (_, __) => SizedBox(width: TSizes.spaceBtwItem),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  separatorBuilder: (_, __) => const SizedBox(width: TSizes.spaceBtwItem),
                   itemBuilder: (_, index) => Obx(
                     () {
                       final imageSelected = controller.selectedProductImage.value == images[index];
@@ -75,7 +72,7 @@ class TProductImageSlider extends StatelessWidget {
                         backgroundColor: dark ? TColors.darkerGrey : TColors.white,
                         onPressed: () => controller.selectedProductImage.value = images[index],
                         border: Border.all(color: imageSelected ? TColors.primaryColor : Colors.transparent),
-                        padding: EdgeInsets.all(2),
+                        padding: const EdgeInsets.all(2),
                       );
                     },
                   ),
@@ -84,7 +81,7 @@ class TProductImageSlider extends StatelessWidget {
             ),
 
             /// Appbar icons
-            TAppBar(
+            const TAppBar(
               showBackArrow: true,
               // actions: [TCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
             )

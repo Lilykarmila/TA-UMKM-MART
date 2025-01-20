@@ -22,17 +22,17 @@ class TChoiceChip extends StatelessWidget {
     return Theme(
       data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
       child: ChoiceChip(
-        label: isColor ? SizedBox() : Text(text),
+        label: isColor ? const SizedBox() : Text(text),
         selected: selected,
         onSelected: onSelected,
         labelStyle: TextStyle(color: selected ? TColors.white : null),
         avatar: isColor
             ? TCircularContainer(width: 50, height: 50, backgroundColor: THelperFunctions.getColor(text)!)
             : null,
-        labelPadding: isColor ? EdgeInsets.all(0) : null,
+        labelPadding: isColor ? const EdgeInsets.all(0) : null,
         // make icon in the center
-        padding: isColor ? EdgeInsets.all(0) : null,
-        shape: isColor ? CircleBorder() : null,
+        padding: isColor ? const EdgeInsets.all(0) : null,
+        shape: isColor ? const CircleBorder() : null,
         backgroundColor: isColor ? THelperFunctions.getColor(text)! : null,
         // selectedColor: THelperFunctions.getColor(text) != null ?Colors.green : null,
       ),

@@ -8,7 +8,6 @@ import 'package:ta_ecommerce/view/chat/chat.dart';
 import 'package:ta_ecommerce/view/personalization/settings/settings.dart';
 import 'package:ta_ecommerce/view/screens/all_products/product_input/product_input.dart';
 import 'package:ta_ecommerce/view/screens/store/store.dart';
-import 'package:ta_ecommerce/view/screens/wishlist/wishlist.dart';
 
 import 'view/screens/home/home.dart';
 
@@ -25,7 +24,7 @@ class NavigationMenu extends StatelessWidget {
         body: Obx(
               () => controller.screensFuture.isNotEmpty
               ? _buildNavigationScaffold(controller, darkMode)
-              : Center(child: CircularProgressIndicator()),
+              : const Center(child: CircularProgressIndicator()),
         ),
       ),
     );
@@ -55,7 +54,7 @@ class NavigationMenu extends StatelessWidget {
       body: Obx(
             () => controller.screensFuture.isNotEmpty
             ? controller.screensFuture[controller.selectedIndex.value]
-            : Center(child: CircularProgressIndicator()),
+            : const Center(child: CircularProgressIndicator()),
       ),
     );
   }
@@ -92,17 +91,17 @@ class NavigationController extends GetxController {
   Future<void> getDestinations() async {
     String? userType = await getUserType();
     List<NavigationDestination> destinationsList = [
-      NavigationDestination(icon: Icon(Iconsax.home), label: 'Beranda'),
-      NavigationDestination(icon: Icon(Iconsax.shop), label: 'Toko'),
-      NavigationDestination(icon: Icon(Iconsax.message), label: 'Chat'),
-      NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
+      const NavigationDestination(icon: Icon(Iconsax.home), label: 'Beranda'),
+      const NavigationDestination(icon: Icon(Iconsax.shop), label: 'Toko'),
+      const NavigationDestination(icon: Icon(Iconsax.message), label: 'Chat'),
+      const NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
     ];
 
     if (userType == "merchant") {
       destinationsList = [
-        NavigationDestination(icon: Icon(Iconsax.home), label: 'Beranda'),
-        NavigationDestination(icon: Icon(Iconsax.message), label: 'Chat'),
-        NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
+        const NavigationDestination(icon: Icon(Iconsax.home), label: 'Beranda'),
+        const NavigationDestination(icon: Icon(Iconsax.message), label: 'Chat'),
+        const NavigationDestination(icon: Icon(Iconsax.user), label: 'Profil'),
       ];
     }
 
@@ -111,18 +110,18 @@ class NavigationController extends GetxController {
 
   Future<List<Widget>> getScreens() async {
     List<Widget> screens = [
-      HomeScreen(),
-      StoreScreen(),
-      ChatScreen(),
-      SettingsScreen(),
+      const HomeScreen(),
+      const StoreScreen(),
+      const ChatScreen(),
+      const SettingsScreen(),
     ];
     String? userType = await getUserType();
 
     if (userType == "merchant") {
       screens = [
-        ProductInputPage(),
-        ChatScreen(),
-        SettingsScreen(),
+        const ProductInputPage(),
+        const ChatScreen(),
+        const SettingsScreen(),
       ];
     }
 

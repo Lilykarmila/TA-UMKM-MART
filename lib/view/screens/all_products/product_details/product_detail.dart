@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:ta_ecommerce/common/widgets/text/section_heading.dart';
 import 'package:ta_ecommerce/model/product_model.dart';
@@ -8,11 +7,8 @@ import 'package:ta_ecommerce/utils/constans/sizes.dart';
 import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
 
 import '../../../chat/widget/chat_room.dart';
-import '../product_reviews/product_reviews.dart';
-import 'widget/bottom_add_to_cart_widget.dart';
 import 'widget/product_detail_image_slider.dart';
 import 'widget/product_meta_data.dart';
-import 'widget/rating_share_widget.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({Key? key, required this.product}) : super(key: key);
@@ -32,7 +28,7 @@ class ProductDetailScreen extends StatelessWidget {
             /// product details
             Padding(
               padding:
-                  EdgeInsets.only(right: TSizes.defaultSpace, left: TSizes.defaultSpace, bottom: TSizes.defaultSpace),
+                  const EdgeInsets.only(right: TSizes.defaultSpace, left: TSizes.defaultSpace, bottom: TSizes.defaultSpace),
               child: Column(
                 children: [
                   /// rating & share
@@ -41,16 +37,16 @@ class ProductDetailScreen extends StatelessWidget {
 
                   /// price, title, stack & brand
                   TProductMetaData(product: product),
-                  SizedBox(height: TSizes.spaceBtwItem),
+                  const SizedBox(height: TSizes.spaceBtwItem),
 
                   /// attribut
                   // TProductAttributes(),
                   // SizedBox(height: TSizes.spaceBtwSections),
 
                   /// checkout button
-                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () {}, child: Text('Checkout'))),
+                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () {}, child: const Text('Checkout'))),
 
-                  SizedBox(height: TSizes.spaceBtwItem),
+                  const SizedBox(height: TSizes.spaceBtwItem),
                   SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(
@@ -61,12 +57,12 @@ class ProductDetailScreen extends StatelessWidget {
                                 merchantType: product.merchant!.type,
                                 // merchantType: product.merchant!.type.toString(),
                               )),
-                          child: Text('Chat Sekarang'))),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                          child: const Text('Chat Sekarang'))),
+                  const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// description
-                  TSectionHeading(title: 'Deskripsi', showActionButton: false),
-                  SizedBox(height: TSizes.spaceBtwItem),
+                  const TSectionHeading(title: 'Deskripsi', showActionButton: false),
+                  const SizedBox(height: TSizes.spaceBtwItem),
 
                   ReadMoreText(
                     product.description ?? '',
@@ -74,14 +70,14 @@ class ProductDetailScreen extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show More',
                     trimExpandedText: '  Less',
-                    moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                   ),
 
                   /// reviews
                   ///
-                  Divider(),
-                  SizedBox(height: TSizes.spaceBtwItem),
+                  const Divider(),
+                  const SizedBox(height: TSizes.spaceBtwItem),
                   // Row(
                   //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   //   children: [
@@ -91,7 +87,7 @@ class ProductDetailScreen extends StatelessWidget {
                   //         onPressed: () => Get.to(() => ProductReviewScreen())),
                   //   ],
                   // ),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
             ),

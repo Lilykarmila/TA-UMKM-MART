@@ -20,7 +20,7 @@ class ChangeName extends StatelessWidget {
         title: Text('Ubah Nama', style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -29,7 +29,7 @@ class ChangeName extends StatelessWidget {
               'Gunakan nama asli untuk verifikasi lebih mudah. Nama ini akan muncul di beberapa halaman.',
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            SizedBox(height: TSizes.spaceBtwSections),
+            const SizedBox(height: TSizes.spaceBtwSections),
 
             // text field and button
             Form(
@@ -40,14 +40,14 @@ class ChangeName extends StatelessWidget {
                     controller: controller.fullName,
                     validator: (value) => TValidator.validateEmptyText('Full Name', value),
                     expands: false,
-                    decoration: InputDecoration(labelText: TTexts.fulllName, prefixIcon: Icon(Iconsax.user)),
+                    decoration: const InputDecoration(labelText: TTexts.fulllName, prefixIcon: Icon(Iconsax.user)),
                   ),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// Save Button
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(onPressed: () => controller.updateUserName(), child: Text('Simpan')),
+                    child: ElevatedButton(onPressed: () => controller.updateUserName(), child: const Text('Simpan')),
                   )
                 ],
               ),

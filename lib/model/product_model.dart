@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ta_ecommerce/model/product_attribute_model.dart';
 
 import 'merchant_model.dart';
 

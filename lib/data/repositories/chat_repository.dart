@@ -1,18 +1,10 @@
-import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/data/repositories/merchant_repository.dart';
 import 'package:ta_ecommerce/data/services/chat_services.dart';
-import 'package:ta_ecommerce/model/chat_model.dart';
-import 'package:ta_ecommerce/model/merchant_model.dart';
 import 'package:ta_ecommerce/model/user_model.dart';
-import 'package:ta_ecommerce/utils/exceptions/firebase_exceptions.dart';
 
-import '../../model/product_model.dart';
-import '../../utils/exceptions/platform_exceptions.dart';
-import '../services/firebase_storage_service.dart';
 class ChatRepository extends GetxController {
   static ChatRepository get instance => Get.find();
   final repository = Get.put(MerchantRepository());

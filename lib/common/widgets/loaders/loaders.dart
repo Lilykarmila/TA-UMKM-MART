@@ -11,11 +11,11 @@ class TLoaders {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
       SnackBar(
         elevation: 0,
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
         backgroundColor: Colors.transparent,
         content: Container(
-          padding: EdgeInsets.all(12.0),
-          margin: EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.all(12.0),
+          margin: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: THelperFunctions.isDarkMode(Get.context!)
@@ -38,8 +38,8 @@ class TLoaders {
       backgroundColor: TColors.primaryColor,
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
-      margin: EdgeInsets.all(20),
-      icon: Icon(Iconsax.check, color: TColors.white),
+      margin: const EdgeInsets.all(20),
+      icon: const Icon(Iconsax.check, color: TColors.white),
     );
   }
 
@@ -52,9 +52,9 @@ class TLoaders {
       colorText: TColors.white,
       backgroundColor: Colors.orange,
       snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 3),
-      margin: EdgeInsets.all(20),
-      icon: Icon(Iconsax.warning_2, color: TColors.white),
+      duration: const Duration(seconds: 3),
+      margin: const EdgeInsets.all(20),
+      icon: const Icon(Iconsax.warning_2, color: TColors.white),
     );
   }
 
@@ -67,9 +67,9 @@ class TLoaders {
       colorText: TColors.white,
       backgroundColor: Colors.red.shade600,
       snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 3),
-      margin: EdgeInsets.all(20),
-      icon: Icon(Iconsax.warning_2, color: TColors.white),
+      duration: const Duration(seconds: 3),
+      margin: const EdgeInsets.all(20),
+      icon: const Icon(Iconsax.warning_2, color: TColors.white),
     );
   }
 }

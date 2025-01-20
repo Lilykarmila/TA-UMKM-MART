@@ -13,40 +13,40 @@ class TBillingAmountSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Subtotal', style: Theme.of(context).textTheme.bodyMedium),
-            Text('\IDR 245', style: Theme.of(context).textTheme.bodyMedium),
+            Text('IDR 245', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItem / 2),
+        const SizedBox(height: TSizes.spaceBtwItem / 2),
 
         /// shipping fee
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Ongkos kirim', style: Theme.of(context).textTheme.bodyMedium),
-            Text('\IDR 60', style: Theme.of(context).textTheme.labelLarge),
+            Text('IDR 60', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItem / 2),
+        const SizedBox(height: TSizes.spaceBtwItem / 2),
 
         /// tax fee
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Ppn', style: Theme.of(context).textTheme.bodyMedium),
-            Text('\IDR 60', style: Theme.of(context).textTheme.labelLarge),
+            Text('IDR 60', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItem / 2),
+        const SizedBox(height: TSizes.spaceBtwItem / 2),
 
         /// order total
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Total', style: Theme.of(context).textTheme.bodyMedium),
-            Text('\IDR 60', style: Theme.of(context).textTheme.titleMedium),
+            Text('IDR 60', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItem / 2),
+        const SizedBox(height: TSizes.spaceBtwItem / 2),
       ],
     );
   }

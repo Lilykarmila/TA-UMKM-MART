@@ -19,7 +19,7 @@ class TCategoryShimmer extends StatelessWidget {
         separatorBuilder: (_, __) => const SizedBox(width: TSizes.spaceBtwItem),
         itemCount: itemCount,
         itemBuilder: (_, __) {
-          return Column(
+          return const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // image

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
 
 class TProfileMenu extends StatelessWidget {
@@ -20,7 +19,7 @@ class TProfileMenu extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: TSizes.spaceBtwItem / 1.5),
+        padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwItem / 1.5),
         child: Row(
           children: [
             Expanded(

@@ -4,7 +4,6 @@ import 'package:ta_ecommerce/bindings/general_binding.dart';
 import 'package:ta_ecommerce/routes/app_routes.dart';
 import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/theme/theme.dart';
-import 'package:ta_ecommerce/view/authentication/onboarding_screen/onboarding.dart';
 
 class UmkmApp extends StatelessWidget {
   const UmkmApp({Key? key}) : super(key: key);

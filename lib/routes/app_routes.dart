@@ -35,6 +35,6 @@ class AppRoutes {
     GetPage(name: TRoutes.signIn, page: () => const LoginScreen()),
     GetPage(name: TRoutes.forgetPassword, page: () => const ForgetPassword()),
     GetPage(name: TRoutes.onBoarding, page: () => const OnBoardingScreen()),
-    GetPage(name: TRoutes.addProducts, page: () => ProductInputPage()),
+    GetPage(name: TRoutes.addProducts, page: () => const ProductInputPage()),
   ];
 }

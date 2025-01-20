@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/controller/product_controller/all_products_controller.dart';
 
@@ -25,7 +24,7 @@ class TSortableProducts extends StatelessWidget {
     return Column(
       children: [
         DropdownButtonFormField(
-          decoration: InputDecoration(prefixIcon: Icon(Iconsax.sort)),
+          decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
           value: controller.selectedSortOption.value,
           onChanged: (value) {
             // sort product based on the selected option
@@ -35,7 +34,7 @@ class TSortableProducts extends StatelessWidget {
               .map((option) => DropdownMenuItem(value: option, child: Text(option)))
               .toList(),
         ),
-        SizedBox(height: TSizes.spaceBtwSections),
+        const SizedBox(height: TSizes.spaceBtwSections),
 
         /// product
         Obx(() {

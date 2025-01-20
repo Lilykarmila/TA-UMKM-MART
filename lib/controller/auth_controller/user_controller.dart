@@ -1,10 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ta_ecommerce/common/widgets/loaders/loaders.dart';
 import 'package:ta_ecommerce/data/repositories/authentication_repository.dart';
@@ -70,8 +66,8 @@ class UserController extends GetxController {
             username: username,
             email: userCredentials.user!.email ?? '',
             profilePicture: userCredentials.user!.photoURL ?? '',
-            creationTime: userCredentials!.user!.metadata.creationTime!.toIso8601String(),
-            lastSignInTime: userCredentials!.user!.metadata.lastSignInTime!.toIso8601String(),
+            creationTime: userCredentials.user!.metadata.creationTime!.toIso8601String(),
+            lastSignInTime: userCredentials.user!.metadata.lastSignInTime!.toIso8601String(),
             updateTime: DateTime.now().toIso8601String(),
           );
 
@@ -94,16 +90,16 @@ class UserController extends GetxController {
   /// delete account warning
   void deleteAccountWarningPopup() {
     Get.defaultDialog(
-        contentPadding: EdgeInsets.all(TSizes.md),
+        contentPadding: const EdgeInsets.all(TSizes.md),
         title: 'Hapus Akun',
         middleText:
             'Apakah Anda yakin ingin menghapus akun Anda secara permanen? Tindakan ini tidak dapat dibatalkan, dan semua data Anda akan dihapus secara permanen.',
         confirm: ElevatedButton(
           onPressed: () async => deleteUserAccount(),
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.red, side: BorderSide(color: Colors.red)),
-          child: Padding(padding: EdgeInsets.symmetric(horizontal: TSizes.lg), child: Text('Hapus')),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.red, side: const BorderSide(color: Colors.red)),
+          child: const Padding(padding: EdgeInsets.symmetric(horizontal: TSizes.lg), child: Text('Hapus')),
         ),
-        cancel: OutlinedButton(onPressed: () => Navigator.of(Get.overlayContext!).pop(), child: Text('Batal')));
+        cancel: OutlinedButton(onPressed: () => Navigator.of(Get.overlayContext!).pop(), child: const Text('Batal')));
   }
 
   /// delete user account
@@ -120,10 +116,10 @@ class UserController extends GetxController {
           await auth.signInWithGoogle();
           await auth.deleteAccount();
           TFullScreenLoader.stopLoading();
-          Get.offAll(() => LoginScreen());
+          Get.offAll(() => const LoginScreen());
         } else if (provider == 'password') {
           TFullScreenLoader.stopLoading();
-          Get.to(() => ReAuthLoginForm());
+          Get.to(() => const ReAuthLoginForm());
         }
       }
     } catch (e) {
@@ -152,7 +148,7 @@ class UserController extends GetxController {
           .reAuthenticateWithEmailAndPassword(verifyEmail.text.trim(), verifyPassword.text.trim());
       await AuthenticationRepository.instance.deleteAccount();
       TFullScreenLoader.stopLoading();
-      Get.offAll(() => LoginScreen());
+      Get.offAll(() => const LoginScreen());
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.warningSnackBar(title: 'Oh Snap', message: e.toString());

@@ -8,7 +8,6 @@ import 'package:ta_ecommerce/utils/constans/sizes.dart';
 
 import '../../../common/widgets/loaders/merchant_shimmer.dart';
 import '../../../common/widgets/merchant/merchant_card.dart';
-import '../../../model/merchant_model.dart';
 import 'merchant_products.dart';
 
 class AllMerchantScreen extends StatelessWidget {
@@ -19,15 +18,15 @@ class AllMerchantScreen extends StatelessWidget {
     final merchantController = MerchantController.instance;
 
     return Scaffold(
-      appBar: TAppBar(title: Text('Toko'), showBackArrow: true),
+      appBar: const TAppBar(title: Text('Toko'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               /// heading
-              TSectionHeading(title: 'Semua Toko', showActionButton: false),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const TSectionHeading(title: 'Semua Toko', showActionButton: false),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// brand
 

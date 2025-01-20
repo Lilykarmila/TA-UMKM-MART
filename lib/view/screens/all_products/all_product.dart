@@ -24,7 +24,7 @@ class AllProductsScreen extends StatelessWidget {
     return Scaffold(
       appBar: TAppBar(title: Text(title), showBackArrow: true),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: FutureBuilder(
             future: futureMethod ?? controller.fetchProductByQuery(query),
             builder: (context, snapshot) {

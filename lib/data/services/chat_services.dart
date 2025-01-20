@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/model/chat_model.dart';
 import 'package:ta_ecommerce/model/user_model.dart';
 
-import '../../model/merchant_model.dart';
 import '../../utils/exceptions/firebase_exceptions.dart';
 import '../repositories/merchant_repository.dart';
 
@@ -47,17 +45,17 @@ class ChatServices extends ChangeNotifier {
     print("jennoi ${snapshot.docs.length}");
     for (var doc in snapshot.docs) {
       // Assuming your document structure is as expected
-      print("jennoi doc : ${doc.id} userId: ${userId}");
+      print("jennoi doc : ${doc.id} userId: $userId");
 
       if (doc.id.contains(userId)) {
         // print("jennoi con ${doc.id.contains(userId)}");
         final roomId = doc.id.split("_");
-        print("jennoi con ${roomId}");
+        print("jennoi con $roomId");
         for (int i = 0; i < roomId.length; i++) {
           if (roomId[i] != userId) {
             print("jennoi id ${roomId[i]}");
             final m = await repository.getFilteredMerchants(roomId[i]);
-            print("jennoi m ${m}");
+            print("jennoi m $m");
             if (m != null) {
               allChats.add(m);
             }

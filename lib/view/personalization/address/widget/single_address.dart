@@ -14,7 +14,7 @@ class TSingleAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return TRoundedContainer(
-      padding: EdgeInsets.all(TSizes.md),
+      padding: const EdgeInsets.all(TSizes.md),
       width: double.infinity,
       showBorder: true,
       backgroundColor: selectedAddress ? TColors.primaryColor.withOpacity(0.5) : Colors.transparent,
@@ -23,7 +23,7 @@ class TSingleAddress extends StatelessWidget {
           : dark
               ? TColors.darkerGrey
               : TColors.grey,
-      margin: EdgeInsets.only(bottom: TSizes.spaceBtwItem),
+      margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItem),
       child: Stack(
         children: [
           Positioned(
@@ -47,10 +47,10 @@ class TSingleAddress extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              SizedBox(height: TSizes.sm / 2),
-              Text('0887 7887 8787', maxLines: 1, overflow: TextOverflow.ellipsis),
-              SizedBox(height: TSizes.sm / 2),
-              Text('Jl. HEA Mokodompit, Lr Mata air 2, samping Maharani mart', softWrap: true),
+              const SizedBox(height: TSizes.sm / 2),
+              const Text('0887 7887 8787', maxLines: 1, overflow: TextOverflow.ellipsis),
+              const SizedBox(height: TSizes.sm / 2),
+              const Text('Jl. HEA Mokodompit, Lr Mata air 2, samping Maharani mart', softWrap: true),
             ],
           )
         ],

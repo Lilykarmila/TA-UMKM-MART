@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ta_ecommerce/common/widgets/layouts/grid_layout.dart';
-import 'package:ta_ecommerce/common/widgets/merchant/merchant_show_case.dart';
-import 'package:ta_ecommerce/common/widgets/products/product_card_vertical.dart';
-import 'package:ta_ecommerce/common/widgets/text/section_heading.dart';
 import 'package:ta_ecommerce/model/category_model.dart';
 
-import '../../../../model/product_model.dart';
-import '../../../../utils/constans/image_strings.dart';
 import '../../../../utils/constans/sizes.dart';
 
 class TCategoryTab extends StatelessWidget {
@@ -18,8 +12,8 @@ class TCategoryTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      children: [
+      physics: const NeverScrollableScrollPhysics(),
+      children: const [
         Padding(
           padding: EdgeInsets.all(TSizes.defaultSpace),
           child: Column(

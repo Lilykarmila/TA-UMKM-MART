@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/common/widgets/appbar/appbar.dart';
-import 'package:ta_ecommerce/common/widgets/list_tiles/settings_menu_tile.dart';
-import 'package:ta_ecommerce/common/widgets/text/section_heading.dart';
 import 'package:ta_ecommerce/data/repositories/authentication_repository.dart';
 import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
-import 'package:ta_ecommerce/view/personalization/address/address.dart';
 
 import '../../../common/widgets/custom_shape/primary_header_container.dart';
 import '../../../common/widgets/list_tiles/user_profile_tile.dart';
-import '../../screens/orders/order.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -31,18 +25,18 @@ class SettingsScreen extends StatelessWidget {
                     title:
                         Text('Account', style: Theme.of(context).textTheme.headlineMedium!.apply(color: TColors.white)),
                   ),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// user profile card
-                  TUserProfileTile(),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  const TUserProfileTile(),
+                  const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
             ),
 
             /// body
             Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
                   // /// account settings
@@ -100,10 +94,10 @@ class SettingsScreen extends StatelessWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () => AuthenticationRepository.instance.logout(),
-                      child: Text('Keluar'),
+                      child: const Text('Keluar'),
                     ),
                   ),
-                  SizedBox(height: TSizes.spaceBtwSections * 2.5),
+                  const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                 ],
               ),
             )

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/controller/chat_controller/chat_controller.dart';
-import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_bubble_widget.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_input.dart';
@@ -28,7 +27,7 @@ class ChatRoomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ChatController());
 
-    final url = 'https://8e10-180-251-144-211.ngrok-free.app/api/decrypt';
+    const url = 'https://5f09-114-122-239-223.ngrok-free.app/api/decrypt';
 
     final loginId = controller.getLoginId();
     var key = "";
@@ -49,7 +48,7 @@ class ChatRoomPage extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(TImages.bgChatRoom2),
                   fit: BoxFit.cover,
@@ -63,7 +62,7 @@ class ChatRoomPage extends StatelessWidget {
                     return Text("Error: ${snapshot.error}");
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                   final List<DocumentSnapshot> docs = snapshot.data.docs;
                   return FutureBuilder(
@@ -88,7 +87,7 @@ class ChatRoomPage extends StatelessWidget {
                     })),
                     builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       } else if (snapshot.hasError) {
                         return Text('Error: ${snapshot.error}');
                       } else {

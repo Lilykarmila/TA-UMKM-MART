@@ -34,7 +34,7 @@ class TMerchantWithIcon extends StatelessWidget {
             categoryTextSize: brandTextSize,
           ),
         ),
-        SizedBox(width: TSizes.xs),
+        const SizedBox(width: TSizes.xs),
         // Icon(Iconsax.verify5, color: iconColor, size: TSizes.xs),
       ],
     );

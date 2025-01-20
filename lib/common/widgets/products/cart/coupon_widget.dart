@@ -16,13 +16,13 @@ class TCouponCode extends StatelessWidget {
     return TRoundedContainer(
       showBorder: true,
       backgroundColor: dark ? TColors.dark : TColors.white,
-      padding: EdgeInsets.only(top: TSizes.sm, bottom: TSizes.sm, right: TSizes.sm, left: TSizes.md),
+      padding: const EdgeInsets.only(top: TSizes.sm, bottom: TSizes.sm, right: TSizes.sm, left: TSizes.md),
       child: Row(
         children: [
           /// textfield
           Flexible(
             child: TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Masukkan kode promo',
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
@@ -41,7 +41,7 @@ class TCouponCode extends StatelessWidget {
                     foregroundColor: dark ? TColors.white.withOpacity(0.5) : TColors.dark.withOpacity(0.5),
                     backgroundColor: TColors.grey.withOpacity(0.5),
                     side: BorderSide(color: TColors.grey.withOpacity(0.1))),
-                child: Text('Apply'),
+                child: const Text('Apply'),
               ))
         ],
       ),

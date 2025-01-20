@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ta_ecommerce/common/widgets/login_signup/form_divider.dart';
-import 'package:ta_ecommerce/common/widgets/login_signup/social_buttons.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
 import 'package:ta_ecommerce/utils/constans/text_strings.dart';
 
@@ -16,17 +13,17 @@ class SignupScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// title
               Text(TTexts.signupTitle, style: Theme.of(context).textTheme.headlineMedium),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// form
-              TSignUpForm(),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const TSignUpForm(),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// divider
               // TFormDivider(dividerText: TTexts.orSignUpWith.capitalize!),

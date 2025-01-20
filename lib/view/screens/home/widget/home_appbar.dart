@@ -4,7 +4,6 @@ import 'package:ta_ecommerce/controller/auth_controller/user_controller.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/loaders/shimmer_loader.dart';
-import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../utils/constans/colors.dart';
 import '../../../../utils/constans/text_strings.dart';
 
@@ -24,7 +23,7 @@ class THomeAppBar extends StatelessWidget {
           Obx(() {
             if (controller.profileLoading.value) {
               // displayy a shimmer loader while user profile is being loaded
-              return TShimmerEffect(width: 80, height: 15);
+              return const TShimmerEffect(width: 80, height: 15);
             } else {
               return Text(controller.user.value.fullName,
                   style: Theme.of(context).textTheme.headlineSmall!.apply(color: TColors.white));

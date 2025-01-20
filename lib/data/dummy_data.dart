@@ -1,5 +1,4 @@
 import 'package:ta_ecommerce/model/merchant_model.dart';
-import 'package:ta_ecommerce/model/user_model.dart';
 import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 
 import '../model/category_model.dart';

@@ -109,22 +109,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ta_ecommerce/common/widgets/appbar/appbar.dart';
-import 'package:ta_ecommerce/common/widgets/custom_shape/search_container.dart';
 import 'package:ta_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:ta_ecommerce/common/widgets/loaders/merchant_shimmer.dart';
-import 'package:ta_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ta_ecommerce/common/widgets/text/section_heading.dart';
 import 'package:ta_ecommerce/controller/category_controller.dart';
 import 'package:ta_ecommerce/controller/merchant_controller/merchant_controller.dart';
-import 'package:ta_ecommerce/utils/constans/colors.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
-import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
 
-import '../../../common/widgets/appbar/tabbar.dart';
 import '../../../common/widgets/merchant/merchant_card.dart';
 import '../merchant/all_merchant.dart';
 import '../merchant/merchant_products.dart';
-import 'widget/category_tab.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({Key? key}) : super(key: key);
@@ -150,7 +144,7 @@ class StoreScreen extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               /// search bar
               // SizedBox(height: TSizes.spaceBtwItem),
@@ -159,8 +153,8 @@ class StoreScreen extends StatelessWidget {
               // SizedBox(height: TSizes.spaceBtwSections),
 
               /// featured merchant
-              TSectionHeading(title: 'Featured Merchant', onPressed: () => Get.to(() => AllMerchantScreen())),
-              SizedBox(height: TSizes.spaceBtwItem),
+              TSectionHeading(title: 'Featured Merchant', onPressed: () => Get.to(() => const AllMerchantScreen())),
+              const SizedBox(height: TSizes.spaceBtwItem),
 
               /// Merchant GRID
               Obx(
@@ -177,7 +171,7 @@ class StoreScreen extends StatelessWidget {
                       mainAxisExtend: 80,
                       itemBuilder: (_, index) {
                         final merchant = merchantController.allMerchants[index];
-                        print("Merchant : " + merchant.id);
+                        print("Merchant : ${merchant.id}");
                         return TMerchantCard(
                           merchant: merchant,
                           showBorder: true,

@@ -49,7 +49,7 @@ class MerchantRepository extends GetxController {
 
   Future<UserModel?> getFilteredMerchants(String id) async {
     try {
-      UserModel? m = null;
+      UserModel? m;
       final list = await getAllUser();
       for (int i = 0; i < list.length; i++) {
         print("jennoi item ${list[i].uid} ${list[i].username}");
@@ -69,7 +69,7 @@ class MerchantRepository extends GetxController {
       // });
       return m;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
   // get merchants for category

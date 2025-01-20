@@ -106,7 +106,7 @@ class MerchantModel {
       final data = document.data()!;
 
       // map JSON record to the model
-      print("Data document: " + document.id);
+      print("Data document: ${document.id}");
       return MerchantModel(
         id: document.id,
         image: data['ProfilePicture'] ?? '',

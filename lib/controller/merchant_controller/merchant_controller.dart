@@ -54,7 +54,6 @@
 //   }
 // }
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:ta_ecommerce/common/widgets/loaders/loaders.dart';
 import 'package:ta_ecommerce/data/repositories/product_repository.dart';
 import 'package:ta_ecommerce/model/product_model.dart';

@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(showBackArrow: true, title: Text('Keranjang', style: Theme.of(context).textTheme.headlineSmall)),
-      body: Padding(
+      body: const Padding(
         padding: EdgeInsets.all(TSizes.defaultSpace),
 
         /// items in cart
@@ -23,7 +23,7 @@ class CartScreen extends StatelessWidget {
       /// checkout button
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
-        child: ElevatedButton(onPressed: () => Get.to(() => CheckoutScreen()), child: Text('Checkout \IDR 240')),
+        child: ElevatedButton(onPressed: () => Get.to(() => const CheckoutScreen()), child: const Text('Checkout IDR 240')),
       ),
     );
   }

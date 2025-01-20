@@ -9,48 +9,48 @@ class AddNewAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TAppBar(showBackArrow: true, title: Text('Tambah Alamat Baru')),
+      appBar: const TAppBar(showBackArrow: true, title: Text('Tambah Alamat Baru')),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Form(
             child: Column(
               children: [
-                TextFormField(decoration: InputDecoration(prefixIcon: Icon(Iconsax.user), labelText: 'Nama')),
-                SizedBox(height: TSizes.spaceBtwInputFields),
-                TextFormField(decoration: InputDecoration(prefixIcon: Icon(Iconsax.mobile), labelText: 'No Hp')),
-                SizedBox(height: TSizes.spaceBtwInputFields),
+                TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.user), labelText: 'Nama')),
+                const SizedBox(height: TSizes.spaceBtwInputFields),
+                TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.mobile), labelText: 'No Hp')),
+                const SizedBox(height: TSizes.spaceBtwInputFields),
                 Row(
                   children: [
                     Expanded(
                       child: TextFormField(
-                          decoration: InputDecoration(prefixIcon: Icon(Iconsax.building_31), labelText: 'Jalan')),
+                          decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_31), labelText: 'Jalan')),
                     ),
-                    SizedBox(width: TSizes.spaceBtwInputFields),
+                    const SizedBox(width: TSizes.spaceBtwInputFields),
                     Expanded(
                         child: TextFormField(
-                            decoration: InputDecoration(prefixIcon: Icon(Iconsax.code), labelText: 'Kode Pos'))),
+                            decoration: const InputDecoration(prefixIcon: Icon(Iconsax.code), labelText: 'Kode Pos'))),
                   ],
                 ),
-                SizedBox(height: TSizes.spaceBtwInputFields),
+                const SizedBox(height: TSizes.spaceBtwInputFields),
                 Row(
                   children: [
                     Expanded(
                       child: TextFormField(
-                          decoration: InputDecoration(prefixIcon: Icon(Iconsax.building), labelText: 'Kota')),
+                          decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building), labelText: 'Kota')),
                     ),
-                    SizedBox(width: TSizes.spaceBtwInputFields),
+                    const SizedBox(width: TSizes.spaceBtwInputFields),
                     Expanded(
                         child: TextFormField(
-                            decoration: InputDecoration(prefixIcon: Icon(Iconsax.activity), labelText: 'Provinsi'))),
+                            decoration: const InputDecoration(prefixIcon: Icon(Iconsax.activity), labelText: 'Provinsi'))),
                   ],
                 ),
-                SizedBox(height: TSizes.spaceBtwInputFields),
-                TextFormField(decoration: InputDecoration(prefixIcon: Icon(Iconsax.global), labelText: 'Negara')),
-                SizedBox(height: TSizes.defaultSpace),
+                const SizedBox(height: TSizes.spaceBtwInputFields),
+                TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.global), labelText: 'Negara')),
+                const SizedBox(height: TSizes.defaultSpace),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: () {}, child: Text('Simpan')),
+                  child: ElevatedButton(onPressed: () {}, child: const Text('Simpan')),
                 )
               ],
             ),

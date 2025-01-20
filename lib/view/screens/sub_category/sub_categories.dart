@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ta_ecommerce/common/widgets/images/t_rounded_image.dart';
-import 'package:ta_ecommerce/common/widgets/products/product_card_horizontal.dart';
 import 'package:ta_ecommerce/common/widgets/text/section_heading.dart';
-import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/utils/constans/sizes.dart';
 
 import '../../../common/widgets/appbar/appbar.dart';
@@ -19,10 +16,10 @@ class SubCategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ProductController());
     return Scaffold(
-      appBar: TAppBar(title: Text('Kuliner'), showBackArrow: true),
+      appBar: const TAppBar(title: Text('Kuliner'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               /// sub categories
@@ -30,12 +27,12 @@ class SubCategoriesScreen extends StatelessWidget {
                 children: [
                   /// heading
                   TSectionHeading(title: 'Kuliner daerah', onPressed: () {}),
-                  SizedBox(height: TSizes.spaceBtwItem / 2),
+                  const SizedBox(height: TSizes.spaceBtwItem / 2),
 
                   /// product card
 
                   Obx(() {
-                    if (controller.isLoading.value) return TVerticalProductShimmer();
+                    if (controller.isLoading.value) return const TVerticalProductShimmer();
                     if (controller.featuredProducts.isEmpty) {
                       return Center(
                           child: Text('Data tidak ditemukan!', style: Theme.of(context).textTheme.bodyMedium));
@@ -47,7 +44,7 @@ class SubCategoriesScreen extends StatelessWidget {
                   })
                 ],
               ),
-              SizedBox(height: TSizes.spaceBtwItem),
+              const SizedBox(height: TSizes.spaceBtwItem),
             ],
           ),
         ),

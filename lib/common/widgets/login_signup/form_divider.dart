@@ -4,7 +4,7 @@ import 'package:ta_ecommerce/utils/helper/helper_functions.dart';
 import '../../../utils/constans/colors.dart';
 
 class TFormDivider extends StatelessWidget {
-  TFormDivider({
+  const TFormDivider({
     super.key,
     required this.dividerText,
   });

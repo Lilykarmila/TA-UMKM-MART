@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:ta_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:ta_ecommerce/model/merchant_model.dart';
 import 'package:ta_ecommerce/view/chat/widget/chat_list.dart';
@@ -24,17 +23,17 @@ class ChatScreen extends StatelessWidget {
           stream: controller.getListChatFromUserLogin(controller.getLoginId()),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator()); // Display a loading indicator
+              return const Center(child: CircularProgressIndicator()); // Display a loading indicator
             } else if (snapshot.hasError) {
               return Text(
                 'Error: ${snapshot.error}',
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
               );
             } else {
               // Data has been successfully retrieved
               List<UserModel> merchantList = snapshot.data!;
               if (merchantList.isEmpty) {
-                return Center(
+                return const Center(
                     child: Text(
                   'No Chat Available',
                   style: TextStyle(color: Colors.black),

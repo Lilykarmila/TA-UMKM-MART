@@ -55,7 +55,7 @@ class TVerticaImageText extends StatelessWidget {
               backgroundColor: backgroundColor,
               // overlayColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
             ),
-            SizedBox(height: TSizes.spaceBtwItem / 2),
+            const SizedBox(height: TSizes.spaceBtwItem / 2),
             SizedBox(
               width: 55,
               child: Text(

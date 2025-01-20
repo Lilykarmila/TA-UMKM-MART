@@ -20,27 +20,27 @@ class UserReviewCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(backgroundImage: AssetImage(TImages.user)),
-                SizedBox(width: TSizes.spaceBtwItem),
+                const CircleAvatar(backgroundImage: AssetImage(TImages.user)),
+                const SizedBox(width: TSizes.spaceBtwItem),
                 Text('John Doe', style: Theme.of(context).textTheme.titleLarge),
               ],
             ),
-            IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
           ],
         ),
 
-        SizedBox(height: TSizes.spaceBtwItem),
+        const SizedBox(height: TSizes.spaceBtwItem),
 
         /// review
         Row(
           children: [
-            TRatingBarIndicator(rating: 4),
-            SizedBox(width: TSizes.spaceBtwItem),
+            const TRatingBarIndicator(rating: 4),
+            const SizedBox(width: TSizes.spaceBtwItem),
             Text('10 oct, 2023', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItem),
-        ReadMoreText(
+        const SizedBox(height: TSizes.spaceBtwItem),
+        const ReadMoreText(
           'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry',
           trimLines: 2,
           trimMode: TrimMode.Line,
@@ -50,13 +50,13 @@ class UserReviewCard extends StatelessWidget {
           lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: TColors.primaryColor),
         ),
 
-        SizedBox(height: TSizes.spaceBtwItem),
+        const SizedBox(height: TSizes.spaceBtwItem),
 
         /// company review
         TRoundedContainer(
           backgroundColor: dark ? TColors.darkerGrey : TColors.grey,
           child: Padding(
-            padding: EdgeInsets.all(TSizes.md),
+            padding: const EdgeInsets.all(TSizes.md),
             child: Column(
               children: [
                 Row(
@@ -66,8 +66,8 @@ class UserReviewCard extends StatelessWidget {
                     Text('10 Oct, 2023', style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),
-                SizedBox(height: TSizes.spaceBtwItem),
-                ReadMoreText(
+                const SizedBox(height: TSizes.spaceBtwItem),
+                const ReadMoreText(
                   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry',
                   trimLines: 2,
                   trimMode: TrimMode.Line,
@@ -80,7 +80,7 @@ class UserReviewCard extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: TSizes.spaceBtwItem),
+        const SizedBox(height: TSizes.spaceBtwItem),
       ],
     );
   }

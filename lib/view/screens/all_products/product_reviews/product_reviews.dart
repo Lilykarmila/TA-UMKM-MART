@@ -14,27 +14,27 @@ class ProductReviewScreen extends StatelessWidget {
     return Scaffold(
       /// appbar
       ///
-      appBar: TAppBar(title: Text('Reviews & Ratings'), showBackArrow: true),
+      appBar: const TAppBar(title: Text('Reviews & Ratings'), showBackArrow: true),
 
       /// body
       ///
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been'),
-              SizedBox(height: TSizes.spaceBtwItem),
+              const Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been'),
+              const SizedBox(height: TSizes.spaceBtwItem),
 
               /// overall product ratings
-              TOverallProductRating(),
-              TRatingBarIndicator(rating: 2.7),
+              const TOverallProductRating(),
+              const TRatingBarIndicator(rating: 2.7),
               Text('12,611', style: Theme.of(context).textTheme.bodySmall),
 
               /// user review list
-              UserReviewCard(),
-              UserReviewCard(),
+              const UserReviewCard(),
+              const UserReviewCard(),
             ],
           ),
         ),

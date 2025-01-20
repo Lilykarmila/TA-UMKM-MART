@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/common/widgets/images/t_circle_avatar_images.dart';
 
-import '../../../common/widgets/images/t_circular_image.dart';
 import '../../../utils/constans/colors.dart';
 import '../../../utils/constans/image_strings.dart';
 import '../../../utils/constans/sizes.dart';
@@ -11,7 +10,7 @@ import '../../../utils/devices/devices_utility.dart';
 import '../../../utils/helper/helper_functions.dart';
 
 class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
-  THeaderChat(
+  const THeaderChat(
       {super.key,
       this.title,
       this.showBackArrow = false,
@@ -34,7 +33,7 @@ class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
     final dark = THelperFunctions.isDarkMode(context);
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: TSizes.xs),
+      padding: const EdgeInsets.symmetric(horizontal: TSizes.xs),
       child: AppBar(
         backgroundColor: TColors.softGrey,
         automaticallyImplyLeading: false,
@@ -51,10 +50,10 @@ class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                TCircleAvatarImage(backgroundImage: TImages.merchantLogo1),
+                const TCircleAvatarImage(backgroundImage: TImages.merchantLogo1),
                 // TCircleAvatarImage(backgroundImage: merchantImage),
                 // TCircularImage(image: TImages.merchantLogo1, height: TSizes.icosMd, width: TSizes.icosMd),
-                SizedBox(width: TSizes.spaceBtwItem),
+                const SizedBox(width: TSizes.spaceBtwItem),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -64,7 +63,7 @@ class THeaderChat extends StatelessWidget implements PreferredSizeWidget {
                 )
               ],
             ),
-            SizedBox(height: TSizes.sm)
+            const SizedBox(height: TSizes.sm)
           ],
         ),
         actions: actions,

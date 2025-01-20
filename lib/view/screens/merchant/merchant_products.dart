@@ -19,12 +19,12 @@ class MerchantProducts extends StatelessWidget {
     return Scaffold(
       appBar: TAppBar(title: Text(merchant.name), showBackArrow: true),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           children: [
             /// Merchant detail
             TMerchantCard(showBorder: true, merchant: merchant),
-            SizedBox(height: TSizes.spaceBtwItem),
+            const SizedBox(height: TSizes.spaceBtwItem),
             FutureBuilder(
                 future: controller.getMerchantProducts(merchant.id),
                 builder: (context, snapshot) {

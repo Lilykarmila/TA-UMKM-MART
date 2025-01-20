@@ -6,7 +6,6 @@ import 'package:ta_ecommerce/data/repositories/user_repository.dart';
 import 'package:ta_ecommerce/navigation_menu.dart';
 import 'package:ta_ecommerce/utils/constans/image_strings.dart';
 import 'package:ta_ecommerce/utils/popups/full_screen_loader.dart';
-import 'package:ta_ecommerce/view/personalization/profile/profile.dart';
 
 import '../utils/network_manager.dart';
 
@@ -63,7 +62,7 @@ class UpdateNameController extends GetxController {
       TLoaders.successSnackBar(title: 'Selamat', message: 'Nama anda berhasil diupdate.');
 
       // move to previous screen
-      Get.off(() => NavigationMenu());
+      Get.off(() => const NavigationMenu());
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());

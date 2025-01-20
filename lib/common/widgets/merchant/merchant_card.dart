@@ -6,7 +6,6 @@ import '../images/t_circular_image.dart';
 import '../products/rounded_container.dart';
 import '../text/t_category_title_text_with_icon.dart';
 import '../../../utils/constans/enums.dart';
-import '../../../utils/constans/image_strings.dart';
 import '../../../utils/constans/sizes.dart';
 
 class TMerchantCard extends StatelessWidget {
@@ -27,7 +26,7 @@ class TMerchantCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: TRoundedContainer(
-        padding: EdgeInsets.all(TSizes.sm),
+        padding: const EdgeInsets.all(TSizes.sm),
         showBorder: showBorder,
         backgroundColor: Colors.transparent,
         child: Row(
@@ -42,7 +41,7 @@ class TMerchantCard extends StatelessWidget {
                 // overlayColor: isDark ? Colors.white : TColors.black,
               ),
             ),
-            SizedBox(width: TSizes.spaceBtwItem / 2),
+            const SizedBox(width: TSizes.spaceBtwItem / 2),
 
             /// text
             Expanded(

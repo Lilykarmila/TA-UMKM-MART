@@ -31,7 +31,7 @@ class TSearchContainer extends StatelessWidget {
         padding: padding,
         child: Container(
           width: TDeviceUtils.getScreenWidth(context),
-          padding: EdgeInsets.all(TSizes.md),
+          padding: const EdgeInsets.all(TSizes.md),
           decoration: BoxDecoration(
             color: showBackground
                 ? dark
@@ -44,7 +44,7 @@ class TSearchContainer extends StatelessWidget {
           child: Row(
             children: [
               Icon(icon, color: TColors.darkerGrey),
-              SizedBox(width: TSizes.spaceBtwItem),
+              const SizedBox(width: TSizes.spaceBtwItem),
               Text(text, style: Theme.of(context).textTheme.bodySmall),
             ],
           ),

@@ -6,9 +6,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ta_ecommerce/data/repositories/chat_repository.dart';
 import 'package:ta_ecommerce/data/repositories/user_repository.dart';
-import 'package:ta_ecommerce/model/merchant_model.dart';
 
-import '../../model/chat_model.dart';
 import '../../model/user_model.dart';
 
 class ChatController extends GetxController {
@@ -47,7 +45,7 @@ class ChatController extends GetxController {
         key = receiverId.substring(0, 8) + user.uid.substring(0, 8);
       }
 
-      print("key:" + key);
+      print("key:$key");
 
       // Construct the request body
       var requestBody = {
@@ -56,7 +54,7 @@ class ChatController extends GetxController {
       };
 
       // Send the POST request to Firestore endpoint
-      var url = Uri.parse('https://8e10-180-251-144-211.ngrok-free.app/api/encrypt');
+      var url = Uri.parse('https://5f09-114-122-239-223.ngrok-free.app/api/encrypt');
       var response = await http.post(
         url,
         body: requestBody,
@@ -104,7 +102,7 @@ class ChatController extends GetxController {
 
   Stream<List<UserModel>> getListChatFromUserLogin(String userId) {
     try {
-      print(userId + " lala");
+      print("$userId lala");
       final list = repository.getListChatFromUserLogin(userId);
       return list;
     } catch (e) {

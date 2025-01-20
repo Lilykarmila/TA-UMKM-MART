@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ta_ecommerce/common/widgets/images/t_circle_avatar_images.dart';
 import 'package:ta_ecommerce/controller/auth_controller/user_controller.dart';
 import 'package:ta_ecommerce/view/personalization/profile/profile.dart';
 
@@ -27,7 +25,7 @@ class TUserProfileTile extends StatelessWidget {
         final networkImage = controller.user.value.profilePicture;
         final image = networkImage.isNotEmpty ? networkImage : TImages.user;
         return controller.imageUploading.value
-            ? TShimmerEffect(width: 70, height: 70, radius: 70)
+            ? const TShimmerEffect(width: 70, height: 70, radius: 70)
             : TCircularImage(
                 image: image, width: 60, height: 60, isNetworkImage: networkImage.isNotEmpty, fit: BoxFit.contain);
       }),
@@ -37,7 +35,7 @@ class TUserProfileTile extends StatelessWidget {
       subtitle:
           Text(controller.user.value.email, style: Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white)),
       trailing:
-          IconButton(onPressed: () => Get.to(() => ProfileScreen()), icon: Icon(Iconsax.edit), color: TColors.white),
+          IconButton(onPressed: () => Get.to(() => const ProfileScreen()), icon: const Icon(Iconsax.edit), color: TColors.white),
     );
   }
 }

@@ -18,40 +18,40 @@ class ResetPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        actions: [IconButton(onPressed: () => Get.back(), icon: Icon(CupertinoIcons.clear))],
+        actions: [IconButton(onPressed: () => Get.back(), icon: const Icon(CupertinoIcons.clear))],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(children: [
             /// image
-            Image(image: AssetImage(TImages.deliveredEmailIllustrations), width: THelperFunctions.screenWidth() * 0.6),
-            SizedBox(height: TSizes.spaceBtwSections),
+            Image(image: const AssetImage(TImages.deliveredEmailIllustrations), width: THelperFunctions.screenWidth() * 0.6),
+            const SizedBox(height: TSizes.spaceBtwSections),
 
             /// title and subtitle
             Text(email, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
-            SizedBox(height: TSizes.spaceBtwItem),
+            const SizedBox(height: TSizes.spaceBtwItem),
             Text(TTexts.changeYourPasswordTitle,
                 style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
-            SizedBox(height: TSizes.spaceBtwItem),
+            const SizedBox(height: TSizes.spaceBtwItem),
             Text(TTexts.changeYourPasswordSubTitle,
                 style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
-            SizedBox(height: TSizes.spaceBtwSections),
+            const SizedBox(height: TSizes.spaceBtwSections),
 
             /// button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.offAll(() => LoginScreen()),
-                child: Text(TTexts.done),
+                onPressed: () => Get.offAll(() => const LoginScreen()),
+                child: const Text(TTexts.done),
               ),
             ),
-            SizedBox(height: TSizes.spaceBtwItem),
+            const SizedBox(height: TSizes.spaceBtwItem),
             SizedBox(
               width: double.infinity,
               child: TextButton(
                 onPressed: () => ForgetPasswordController.instance.resendPasswordResetEmail(email),
-                child: Text(TTexts.resendEmail),
+                child: const Text(TTexts.resendEmail),
               ),
             ),
           ]),

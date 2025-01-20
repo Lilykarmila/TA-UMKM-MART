@@ -66,7 +66,6 @@ class HomeScreen extends StatelessWidget {
                             title: 'Semua Produk UMKM',
                             futureMethod: controller.fetchAllFeaturedProducts(),
                           ))),
-                  const SizedBox(height: TSizes.spaceBtwItem),
 
                   /// Popular Product
 

@@ -15,7 +15,7 @@ class ChatController extends GetxController {
   final repository = Get.put(ChatRepository());
   final uRepo = Get.put(UserRepository());
   final firebase = FirebaseAuth.instance;
-  final apiUrl = 'https://b027-180-251-144-211.ngrok-free.app/api/encrypt';
+  final apiUrl = 'https://99d3-114-10-139-132.ngrok-free.app/api/encrypt';
 
   // void sendMessages(
   //     String receiverId, String receiverName, String receiverEmail, String receiverImage, String message) async {
@@ -54,7 +54,7 @@ class ChatController extends GetxController {
       };
 
       // Send the POST request to Firestore endpoint
-      var url = Uri.parse('https://5f09-114-122-239-223.ngrok-free.app/api/encrypt');
+      var url = Uri.parse('https://99d3-114-10-139-132.ngrok-free.app/api/encrypt');
       var response = await http.post(
         url,
         body: requestBody,

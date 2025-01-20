@@ -29,41 +29,23 @@ class TVerticaImageText extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: TSizes.spaceBtwItem),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /// circular icon
-            // Container(
-            //   width: 56,
-            //   height: 56,
-            //   padding: EdgeInsets.all(TSizes.sm),
-            //   decoration: BoxDecoration(
-            //     color: backgroundColor,
-            //     borderRadius: BorderRadius.circular(100),
-            //   ),
-            //   child: Center(
-            //     child: Image(
-            //       image: AssetImage(image),
-            //       fit: BoxFit.cover,
-            //       // color: TColors.dark
-            //     ),
-            //   ),
-            // ),
             TCircularImage(
               image: image,
-              fit: BoxFit.fitWidth,
+              // fit: BoxFit.cover,
               padding: TSizes.sm * 1.4,
               isNetworkImage: isNetworkImage,
               backgroundColor: backgroundColor,
               // overlayColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
             ),
-            const SizedBox(height: TSizes.spaceBtwItem / 2),
-            SizedBox(
-              width: 55,
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.labelMedium!.apply(color: textColor),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
+            const SizedBox(height: TSizes.spaceBtwItem / 4),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.labelMedium!.apply(color: textColor),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             )
           ],
         ),

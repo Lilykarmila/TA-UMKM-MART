@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:ta_ecommerce/common/styles/shadow_style.dart';
 import 'package:ta_ecommerce/common/widgets/images/t_rounded_image.dart';
 import 'package:ta_ecommerce/common/widgets/products/rounded_container.dart';
@@ -42,8 +43,7 @@ class TProductCardVertical extends StatelessWidget {
 
               // padding: EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
-              child: Center(
-                  child: TRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true)),
+              child: TRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true),
             ),
             const SizedBox(height: TSizes.spaceBtwItem / 2),
 
@@ -74,23 +74,23 @@ class TProductCardVertical extends StatelessWidget {
                     child: TProductPriceText(price: controller.getProductPrice(product)),
                   ),
                 ),
-                const SizedBox(height: 50)
+                const SizedBox(height: 50),
 
                 /// add to cart button
-                // Container(
-                //   decoration: const BoxDecoration(
-                //     color: TColors.dark,
-                //     borderRadius: BorderRadius.only(
-                //       topLeft: Radius.circular(TSizes.cardRadiusMd),
-                //       bottomRight: Radius.circular(TSizes.cardRadiusMd),
-                //     ),
-                //   ),
-                //   child: SizedBox(
-                //     width: TSizes.icosLg * 1.2,
-                //     height: TSizes.icosLg * 1.2,
-                //     child: Center(child: Icon(Iconsax.add, color: TColors.white)),
-                //   ),
-                // ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: TColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.cardRadiusMd),
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: TSizes.icosLg * 1.2,
+                    height: TSizes.icosLg * 1.2,
+                    child: Center(child: Icon(Iconsax.add, color: TColors.white)),
+                  ),
+                ),
               ],
             ),
           ],

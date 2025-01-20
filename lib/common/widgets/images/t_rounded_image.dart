@@ -11,7 +11,7 @@ class TRoundedImage extends StatelessWidget {
     this.padding,
     this.onPressed,
     this.backgroundColor,
-    this.fit = BoxFit.contain,
+    this.fit = BoxFit.cover,
     required this.imageUrl,
     this.applyImageRadius = true,
     this.isNetworkImage = false,

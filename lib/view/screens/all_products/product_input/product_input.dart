@@ -137,7 +137,13 @@ class _ProductInputPageState extends State<ProductInputPage> {
         images: [],
         isFeatured: true,
         merchant: MerchantModel(
-            id: _merchantId, image: _merchantImage, name: _merchantName, isFeatured: true, description: "", type: ""));
+            id: _merchantId,
+            image: _merchantImage,
+            name: _merchantName,
+            isFeatured: true,
+            description: "",
+            type: "",
+            email: ''));
     controller.submitProduct(context, product);
   }
 }
@@ -147,7 +153,8 @@ class AddProductDialog extends StatefulWidget {
   final Function(String?) onCategoryChanged;
   final List<CategoryModel> categoryList;
 
-  const AddProductDialog({super.key, required this.onSubmit, required this.onCategoryChanged, required this.categoryList});
+  const AddProductDialog(
+      {super.key, required this.onSubmit, required this.onCategoryChanged, required this.categoryList});
   @override
   _AddProductDialogState createState() => _AddProductDialogState();
 }
